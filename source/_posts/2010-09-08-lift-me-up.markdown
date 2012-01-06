@@ -1,0 +1,137 @@
+---
+author: ctoestreich
+date: '2010-09-08 08:27:23'
+layout: post
+comments: true
+slug: lift-me-up
+status: publish
+title: Lift Me Up
+wordpress_id: '7'
+categories:
+- Technology
+tags:
+- Ajax
+- Code
+- Java
+- Lift
+- Sample
+- Scala
+---
+
+I have been working on [Scala][1] and [Lift][2] for a few weeks now and wanted
+to post some of my code samples here and hopefully they are useful to someone
+else in the future.
+
+I would like to first say thank you to all those involved with developing and
+creating the [liftweb demos][3].  I know doing that can be a huge PITA, so
+Thanks!  I would simply like to ask that future versions of demo code include
+the html file code that produces the UI output.  Having only the backend code
+causes a bit of stumbling.
+
+The first examle I worked on was based on the Ajax
+([http://demo.liftweb.net/ajax][4]) sample from liftweb.  Here is the code
+below.
+
+File: ajax.html
+
+
+    <lift:surround with="default" at="content">
+
+     <div>
+
+     <lift:AjaxSample.sample>
+
+     <ajax:clicker>Click here to update count <span
+id="cnt_id">0</span></ajax:clicker>
+
+     <br />
+
+     <ajax:auto limit="20" />
+
+     </lift:AjaxSample.sample>
+
+     </div>
+
+    </lift:surround>
+
+File: AjaxSample.scala
+
+
+    import net.liftweb.http._
+
+    import js.jquery.JqJsCmds.DisplayMessage
+
+    import js.JsCmds.SetHtml
+
+    import S._
+
+    import SHtml._
+
+    import net.liftweb.util._
+
+    import Helpers._
+
+    import scala.xml._
+
+    import net.liftweb.http.js._
+
+    import net.liftweb.common.{Empty, Logger, Full}
+
+    import java.lang.String
+
+    import net.liftweb.widgets.autocomplete.AutoComplete
+
+    class AjaxSample {
+
+     def sample(xhtml: NodeSeq): NodeSeq = {
+
+     // local state for the counter
+
+     var cnt = 0
+
+     // get the id of some elements to update
+
+     val spanName: String = S.attr("id_name") openOr "cnt_id"
+
+     val msgName: String = S.attr("id_msgs") openOr "messages"
+
+     // build up an ajax <a> tag to increment the counter
+
+     def doClicker(text: NodeSeq) =
+
+     a(() => {cnt = cnt + 1; SetHtml(spanName, Text( cnt.toString))}, text)
+
+     // bind the view to the functionality
+
+     bind("ajax", xhtml,
+
+     "clicker" -> doClicker _,
+
+     "auto" -> AutoComplete("", buildQuery _, _ => ()))
+
+     }
+
+     private def buildQuery(current: String, limit: Int): Seq[String] = {
+
+     Log.info("Checking on server side with "+current+" limit "+limit)
+
+     (1 to limit).map(n => current+""+n)
+
+     }
+
+    }
+
+All that this example does is simply do the a href tag ajax click to increment
+the number and builds a autocomplete box that will simply show 10 of whatever
+text you are typing retrieved via ajax of course.
+
+I will keep putting my code samples up here as I create them.
+
+   [1]: http://www.scala-lang.org (Scala)
+
+   [2]: http://www.liftweb.net (Liftweb)
+
+   [3]: http://demo.liftweb.net (liftweb demos)
+
+   [4]: http://demo.liftweb.net/ajax
+

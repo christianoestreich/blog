@@ -1,0 +1,335 @@
+---
+author: ctoestreich
+date: '2011-06-14 12:18:58'
+layout: post
+comments: true
+slug: redis-vs-h2
+status: publish
+title: Grails 1.4 - Redis vs H2 Performance
+wordpress_id: '130'
+categories:
+- Technology
+tags:
+- Grails
+- groovy
+- h2
+- highcharts
+- jquery
+- performance
+- redis
+- widget
+---
+
+Recently at a monthly [DevJam][1] meeting [Ted Naleid][2] presented on the
+topic of [Redis][3] and how its use as a data store and cache.  I was
+intrigued and wanted to delve into Redis more as a semi-persistent data store.
+I came across the [Redis GORM plugin][4] that allows you to persist POGOs
+directly to Redis via normal GORM operations.  With the release of [Grails
+1.4.0 M1][5], there have been some changes to the default persistent data
+store from HSQL to an [H2 database][6].  I wondered just how much faster
+read/write operations could be with Redis (if at all) over the H2 database so
+I set out to write a little test app to see for myself.
+
+I am not going to get into the specifics of the jQuery widget I wrote to do
+this, how to configure it or the semantics on how/why I chose to use the
+deferred object, but please grab the code and have a look at that stuff too.
+
+The source code for this prototype is available at
+[https://github.com/ctoestreich/redis-gorm][7].
+
+## Getting Redis
+
+The first thing I needed to do was download the windows port of Redis from
+[https://github.com/dmajkic/redis/downloads][8].  I downloaded version 2.2.5
+and edited the following lines in the 32bit (or 64bit) redis.conf file:
+
+Uncomment/change the following line (probably a good idea to always have a PW
+on any persistent stores) _requirepass a1s2d3f4qwert!_
+
+You can start redis now while we get the project running
+
+[![][9]][10]
+
+## Running Grails
+
+For this particular task I decided to use Grails 1.4.0 M1.  It was a bit
+different than 1.3.7 in getting the client setup working well with the newly
+integrated resources plugin.  I assumed that the wiring would be a little more
+automatic, and it was, but I was still required to manually add the
+r:resources and the jqui tags.  I also had a bit of an issue with IntelliJ
+10.5 not recognizing the Grails 1.4.0 M1 as a valid SDK.  I basically ended up
+coding all the stuff old school in textpad (so forgive any non-static analysis
+friendly code).
+
+I installed the [Grails Redis GORM][11] plugin which allows you to add the
+following line and expose normal Gorm operations against Redis.
+
+
+    static mapWith = "redis"
+
+My objects were pretty simple and consisted of the following nearly identical
+code.
+
+
+    class RedisObject {
+
+      static mapWith = "redis"
+
+      String name
+
+      List someList
+
+      static mapping = {
+
+        name(index:true)
+
+      }
+
+    }
+
+
+    class GormObject {
+
+      String name
+
+      List someList
+
+    }
+
+I also added the following to the Config.groovy to get Grails talking to Redis
+
+
+    grails.redis.host="localhost"
+
+    grails.redis.port=6379
+
+    grails.redis.password="a1s2d3f4qwert!"
+
+    grails.redis.pooled=true
+
+    grails.redis.resources=15
+
+    grails.redis.timeout=5000
+
+With your grails home and path set to recognize Grails 1.4.0 M1, start the
+server up.
+
+
+    grails run-app
+
+After starting the server navigate to [http://localhost:8080/redis-
+gorm/dataTest/index][12]
+
+## Under The Covers
+
+What is happening under the covers is multiple ajax requests are being
+performed for both create/save and retrieve against Redis and H2.  I am using
+Highcharts to render the results for the operations realtime using the jQuery
+ajax and deferred libraries.  Every time both (Redis/H2) requests complete it
+doubles (configurable) the number of operations it is trying to perform.  The
+ajax calls return back to the client the time in ms it took to execute the
+request number of operation.  The results will not be graphed until both Redis
+and H2 ajax operations have returned results.
+
+Here is a very simplified flow of what is happening:
+
+create widget -> performTest -> defer(getRedis, getGorm) -> both completed ->
+collect results data -> update graph -> increase record count -> start from
+performTest again
+
+Here is a snippet of the code used on the controller to conduct the tests. I
+would encourage you to browse and download the code from github for more
+specifics on the client and server code.
+
+
+    def getGorm = {
+
+        def gorms = []
+
+        def duration = benchmark {
+
+          def count = GormObject.count()
+
+          (1..Integer.parseInt(params?.recordCount ?: "2")).each {
+
+            gorms << GormObject.findById((Math.random() *
+count).asType(Integer.class))
+
+          }
+
+        }
+
+        println "Gorm found: ${gorms.size()}"
+
+        render text: duration, contentType: "text/plain"
+
+      }
+
+      def getRedis = {
+
+        def redises = []
+
+        def duration = benchmark {
+
+          def count = RedisObject.count()
+
+          (1..Integer.parseInt(params?.recordCount ?: "2")).each {
+
+            redises << RedisObject.findById((Math.random() *
+count).asType(Integer.class))
+
+          }
+
+          println "Redis found: ${redises.size()}"
+
+        }
+
+        render text: duration, contentType: "text/plain"
+
+      }
+
+      def makeGorm = {
+
+        Integer total = Integer.parseInt(params?.recordCount ?: "100")
+
+        def duration = benchmark {
+
+          (1..total).each {
+
+            new GormObject(name: "GormObject" + it, someList:
+makeListData(10)).save()
+
+          }
+
+        }
+
+        render text: duration, contentType: "text/plain"
+
+      }
+
+      def makeRedis = {
+
+        Integer total = Integer.parseInt(params?.recordCount ?: "100")
+
+        def duration = benchmark {
+
+          (1..total).each {
+
+            new RedisObject(name: "RedisObject" + it, someList:
+makeListData(10)).save()
+
+          }
+
+        }
+
+        render text: duration, contentType: "text/plain"
+
+      }
+
+       private makeListData(count) {
+
+        def listData = []
+
+        (1..count).each {
+
+          listData << ["listData${it}"]     }     listData   }   private
+benchmark = { closure ->
+
+        def start = System.currentTimeMillis()
+
+        closure.call()
+
+        def now = System.currentTimeMillis()
+
+        now - start
+
+      }
+
+When invoking the read operation I wanted to grab a random set of results so I
+opted to use a random number generator and findByID(rand) to grab single
+records as opposed to a list operation.  There is probably some inherent
+overhead in this type of operation as opposed to grabbing a whole list at a
+time.  There is probably a better way to do this, but as the count of records
+to retrieve goes up, I was really hoping to see the difference in read
+operation time between the two by forcing more reads.
+
+## My Observations
+
+First I should mention that I haven't collected and analyzed with any detail
+specific numbers.  I have mainly just used the graphical output and results
+generated from the controllers as my point of reference.  I think depending on
+the machine the mileage of the tests and results will vary.
+
+Redis is consistently faster on the read operations while the save seems to be
+pretty close and H2 keeps pace with Redis.  The tests do seem to jump around a
+bit, but generally speaking Redis read/write operations are faster that those
+of H2 running in memory.  I suppose I expected this result as Redis is best
+suited as a key/value store and lacks some of the more robust operations
+supported in a product more suited for relational data modeling, but I think
+as a simple and fast data store, Redis is more than a viable option.
+
+## Things To Note
+
+Running the tests more times up to a number like 65k test items without
+stopping the server (just refreshing the browser) will help get items into the
+databases so there is more objects to randomize against the read operation.
+
+I would like to see these same tests conducted using different criteria-based
+and list operations so the db has to do more of the work in joining and
+aggregating data on the read operations.  Maybe next week.
+
+## Sample Output
+
+The results from this graph show the time in ms it took to process a set
+number of records per operation type.  The script will process them in blocks
+of 2,4,8,16,32 and so on until it hits some limit set via the widget.  Then
+the results are graphed for the time to execute 2 saves, 4 saves, 8 saves,
+etc.  The same is true of the read operations graph and test.
+
+[![][13]][14]
+
+
+## Conclusion
+
+I have more research I would like to conduct on this topic by comparing a
+physical data store like MySQL against Redis for example.  I don't have an
+immediate need for a simple key/value store or cache at the moment, but I
+would love to incorporate Redis into our application stack in the the near
+future.
+
+The source code for this prototype is available at
+[https://github.com/ctoestreich/redis-gorm][7].
+
+   [1]: http://devjam.com/ (DevJam)
+
+   [2]: http://naleid.com/blog/ (Ted Naleid)
+
+   [3]: http://redis.io/ (Redis)
+
+   [4]: http://www.grails.org/plugin/redis (Redis GORM)
+
+   [5]: http://www.grails.org/blog/view/admin/Grails+1.4.0.M1+is+now+available
+(Grails 1.4.0 M1)
+
+   [6]: http://www.h2database.com/html/main.html (H2 Database)
+
+   [7]: https://github.com/ctoestreich/redis-gorm
+
+   [8]: https://github.com/dmajkic/redis/downloads
+
+   [9]: http://www.christianoestreich.com/wp-
+content/uploads/2011/06/start_redis.png (start_redis)
+
+   [10]: http://www.christianoestreich.com/wp-
+content/uploads/2011/06/start_redis.png
+
+   [11]: http://www.grails.org/plugin/redis (Grails Redis GORM)
+
+   [12]: http://localhost:8080/redis-gorm/dataTest/index (local site)
+
+   [13]: http://www.christianoestreich.com/wp-
+content/uploads/2011/06/graph1.png (Results Graph)
+
+   [14]: http://www.christianoestreich.com/wp-
+content/uploads/2011/06/graph1.png
+
