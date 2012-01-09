@@ -38,6 +38,8 @@ name as this would be shared across clients and not give each client the
 flexibility to define it's own unique security interceptor property values
 such as username and password
 
+<!-- more -->
+
 Here is a snippet of the code from my plugin's doWithSpring block. This code
 is within a loop that iterates all the clients set up with in the
 application's Config.groovy (see [plugin configuration][4] in the docs).
