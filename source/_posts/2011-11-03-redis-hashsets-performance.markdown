@@ -29,6 +29,8 @@ I wanted to see if I could improve a bit on his memory allocation in the redis
 hash so I set out to write an algorithm that might help further reduce the
 overhead.
 
+<!-- more -->
+
 I was using [groovyconsole][3] to run all of these scripts.
 
 Here is a comparison of using a traditional numerical id to one of my
