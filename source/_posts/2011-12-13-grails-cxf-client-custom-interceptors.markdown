@@ -32,8 +32,6 @@ the security interceptor. This was done to allow users to diverge from using
 the standard WSS4J interceptor that I bundled with the plugin. I accomplished
 this by adding an single out interceptor to the cxf client proxy.
 
-<!--more-->
-
 In the latest version I have taken the interceptor injection one step further
 and allowed users to configure any number of in, out or fault out interceptors
 they want to add to the interceptor chain.  In addition I have provided a flag
