@@ -38,6 +38,8 @@ they want to add to the interceptor chain.  In addition I have provided a flag
 to turn on or off the default logging in and out interceptors that I am auto
 injecting for the users.
 
+<!-- more  -->
+
 The following partial documentation is available in full at
 [https://github.com/ctoestreich/cxf-client][2]
 
