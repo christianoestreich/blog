@@ -34,7 +34,7 @@ below.
 
 File: ajax.html
 
-```
+``` html
     <lift:surround with="default" at="content">
      <div>
      <lift:AjaxSample.sample>
@@ -48,7 +48,7 @@ File: ajax.html
 
 File: AjaxSample.scala
 
-```
+``` scala
     import net.liftweb.http._
     import js.jquery.JqJsCmds.DisplayMessage
     import js.JsCmds.SetHtml
