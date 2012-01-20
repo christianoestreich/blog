@@ -35,7 +35,6 @@ for our inline conversion of existing java code.
 All the [source code][4] for this can be found at GitHub.  You can pull it
 down via the command:
 
-
     git clone git@github.com:ctoestreich/grails-scala.git
 
 I am assuming you will be using IntelliJ (as it is my favorite IDE).  If you
@@ -43,7 +42,6 @@ are using Eclipse you will be on your own for a lot of the set up pieces.  I
 am also assuming you have grails already setup on your machine correctly.  The
 first thing to do is install the scala plugin for grails via the following
 grails command:
-
 
     grails install-plugin scala
 
@@ -71,131 +69,95 @@ languages to compile nicely together.
 
 First I defined a scala trait.
 
-
+``` scala
     package com.far.scape.scala
-
     trait Cast {
-
       def race():String
-
       def actor():String
-
       def save()
-
     }
+```
 
 Then I created the following objects.
 
 **Java Object**
 
-
+``` java
     package com.far.scape;
-
     import com.far.scape.scala.Cast;
 
     //public class Kadargo implements JavaCast {
-
     public class Kadargo implements Cast {
-
         private String name;
-
+        
         public String getName() {
-
             return name;
-
         }
-
+        
         public void save(){
-
             System.out.println("in java save");
-
         }
 
         public void setName(String name) {
-
             this.name = name;
-
         }
 
         public String race() {
-
             return "I am Luxan";
-
         }
 
         public String actor() {
-
             return "Anthony Simcoe";
-
         }
-
     }
+```
 
 **Scala Object**
 
-
+``` scala
     package com.far.scape.scala
-
     //import com.far.scape.JavaCast
-
     //class Crichton extends JavaCast  {
-
     class Crichton extends Cast  {
-
       var name = ""
 
       def save() {
-
         println("in scala save")
-
       }
 
       def race():String = {
-
         "Frelling Human!"
-
       }
 
        def actor():String = {
-
         "Ben Browder"
-
       }
-
     }
+```
 
 **Groovy Object**
 
-
+``` groovy
     package com.far.scape
-
+    
     import com.far.scape.scala.Cast
-
     //class Chiana implements JavaCast {
-
     class Chiana implements Cast {
-
       String name
 
       String race() {
-
         "I am Nebari"
-
       }
 
       String actor() {
-
         "Gigi Egdley"
-
       }
 
       void save() {
-
         println "in groovy save"
-
       }
-
     }
+```
 
 One thing to note is that the directory structure matters.  There is a bug
 with the scala grails plugin at the time I wrote this post with grails 1.3.5+
@@ -211,10 +173,7 @@ this is gone now since the version didn't change).
 and dirty fix we do the following to the installed script
 scala-0.5/scripts/Events.groovy: 1) **comment**
 **out**//**addScalaToCompileSrcPaths**(compileBinding)
-
->
-
->   * then we have to put scala sources under src/java (src/scala is not
+    * then we have to put scala sources under src/java (src/scala is not
 usable)
 
 I have all my scala code under src/java/com/far/scape/scala.  I decided to put
@@ -226,84 +185,63 @@ put an implementation in each class.  Ideally I will be able to actually
 persist the objects, but for now I just used save on the interface to see how
 well the trait worked across java, scala and groovy.
 
-
+``` groovy
     package com.far.scape
 
     import com.far.scape.scala.Cast
 
     class GrailsService {
-
         static transactional = true
 
         def saveObject(Cast cast) {
-
           println "Grails Service saving object ${cast.class.name}"
-
           cast.save()
-
           true
-
         }
-
     }
+```
 
 ## Testing The Code
 
 I wrote a really simply integration test to pass all the object types to the
 grails service saveObject method.
 
-
+``` groovy
     package com.far.scape
 
     import grails.test.GrailsUnitTestCase
-
     import com.far.scape.scala.Crichton
 
     class GrailsServiceTests extends GrailsUnitTestCase {
-
       def grailsService
 
       protected void setUp() {
-
         super.setUp()
-
       }
 
       protected void tearDown() {
-
         super.tearDown()
-
       }
 
       void testSaveGroovyObject() {
-
         def chiana = new Chiana(name: "Chiana")
-
         assertTrue grailsService.saveObject(chiana)
-
       }
 
       void testSaveJavaObject() {
-
         def kadargo = new Kadargo(name: "Ka'Dargo")
-
         assertTrue grailsService.saveObject(kadargo)
-
       }
 
       void testSaveScalaObject() {
-
         def crichton = new Crichton(name: "Crichton")
-
         assertTrue grailsService.saveObject(crichton)
-
       }
-
     }
+```
 
 To run the integration tests execute the command below.  The -echoOut is to
 show the output from any print statements you have in your tests.
-
 
     grails test-app -echoOut
 
@@ -322,50 +260,35 @@ post.
 I also added a simple controller and view to test adding different objects to
 gsp page.
 
-
+``` groovy
     package grails.scala
 
     import com.far.scape.Chiana
-
     import com.far.scape.scala.Crichton
-
     import com.far.scape.Kadargo
 
     class MoyaController {
-
         def index = {
-
-          def characters = [new Chiana(), new Kadargo(), new
-Crichton()].asList()
-
+          def characters = [new Chiana(), new Kadargo(), new Crichton()].asList()
           [view:"index","characters":characters]
-
         }
-
     }
+```
 
 Then I created an index.gsp under grails-app/views/moya.
 
-
+``` html
     <html>
-
     <body>
-
     <g:each in="${characters}" var="character">
-
     ${character.class.name}<br>
-
     ${character.race()}<br>
-
     ${character.actor()}<br>
-
     <p></p>
-
     </g:each>
-
     </body>
-
     </html>
+```
 
 This should render the following:
 
@@ -385,27 +308,19 @@ Happy Coding.
 
    [5]: http://www.jetbrains.com/idea/ (IntelliJ IDE)
 
-   [6]: http://www.christianoestreich.com/wp-
-content/uploads/2011/04/install_scala_plugin.png (Install Scala Plugin)
+   [6]: http://build.christianoestreich.com/wp-content/uploads/2011/04/install_scala_plugin.png (Install Scala Plugin)
 
-   [7]: http://www.christianoestreich.com/wp-
-content/uploads/2011/04/install_scala_plugin.png
+   [7]: http://build.christianoestreich.com/wp-content/uploads/2011/04/install_scala_plugin.png
 
-   [8]: http://www.christianoestreich.com/wp-
-content/uploads/2011/04/save_interface.png (Save Interface)
+   [8]: http://build.christianoestreich.com/wp-content/uploads/2011/04/save_interface.png (Save Interface)
 
-   [9]: http://www.christianoestreich.com/wp-
-content/uploads/2011/04/save_interface.png
+   [9]: http://build.christianoestreich.com/wp-content/uploads/2011/04/save_interface.png
 
-   [10]: http://www.christianoestreich.com/wp-
-content/uploads/2011/04/test_output_save.png (Testing Mock Save)
+   [10]: http://build.christianoestreich.com/wp-content/uploads/2011/04/test_output_save.png (Testing Mock Save)
 
-   [11]: http://www.christianoestreich.com/wp-
-content/uploads/2011/04/test_output_save.png
+   [11]: http://build.christianoestreich.com/wp-content/uploads/2011/04/test_output_save.png
 
-   [12]: http://www.christianoestreich.com/wp-content/uploads/2011/04/groovy-
-scala-view.png (Output View)
+   [12]: http://build.christianoestreich.com/wp-content/uploads/2011/04/groovy-scala-view.png (Output View)
 
-   [13]: http://www.christianoestreich.com/wp-content/uploads/2011/04/groovy-
-scala-view.png
+   [13]: http://build.christianoestreich.com/wp-content/uploads/2011/04/groovy-scala-view.png
 
