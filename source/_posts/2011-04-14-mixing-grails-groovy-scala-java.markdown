@@ -166,15 +166,11 @@ and comment out the following line:
 
 _**//addScalaToCompileSrcPaths(compileBinding)**_
 
-I found the following note on the now-depreciated plugin page (not sure why
-this is gone now since the version didn't change).
+I found the following note on the now-depreciated plugin page (not sure why this is gone now since the version didn't change).
 
-NOTES: current 0.5 version seems incompatible with **Grails** 1.3 As quick
-and dirty fix we do the following to the installed script
-scala-0.5/scripts/Events.groovy: 1) **comment**
-**out**//**addScalaToCompileSrcPaths**(compileBinding)
-* then we have to put scala sources under src/java (src/scala is not
-usable)
+NOTES: current 0.5 version seems incompatible with **Grails** 1.3 As quick and dirty fix we do the following to the installed script scala-0.5/scripts/Events.groovy: 
+	* comment out //addScalaToCompileSrcPaths(compileBinding)
+	* then we have to put scala sources under src/java (src/scala is not usable)
 
 I have all my scala code under src/java/com/far/scape/scala.  I decided to put
 it in a dir under the package named scala so it was easier to differentiate.
