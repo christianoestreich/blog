@@ -26,45 +26,26 @@ what we ended up doing.
 First we created a helper class to load the context from Spring which turned
 out to be as simple as the following:
 
-
+``` scala
     package hsr.model
-
     import net.liftweb.http.{LiftRules, S, SHtml}
-
     import org.springframework.web.context.ContextLoader
-
     import com.demo.app.icue.helloworld.businesslogic.HelloWorld
-
     import com.demo.app.common.reference.businesslogic.Reference
-
-    import org.springframework.validation.{MapBindingResult,BindingResult,Fiel
-dError,ObjectError}
+    import org.springframework.validation.{MapBindingResult,BindingResult,FieldError,ObjectError}
 
     /**
-
      * Some utils for integrating Lift and Spring.
-
-     * http://wordpress.rintcius.nl/post/a-recipe-to-integrate-lift-in-an-
-existing-spring-based-web-application
-
+     * http://wordpress.rintcius.nl/post/a-recipe-to-integrate-lift-in-an-existing-spring-based-web-application
      * http://camel.465427.n5.nabble.com/Scala-and-Spring-config-td474898.html
-
-     * http://berlinbrowndev.blogspot.com/2008/02/accessing-spring-framework-
-from-liftweb.html
-
+     * http://berlinbrowndev.blogspot.com/2008/02/accessing-spring-framework-from-liftweb.html
      */
-
     object LiftUtils {
-
      val context = ContextLoader.getCurrentWebApplicationContext()
-
-     def getHelloWorld: HelloWorld = context.getBean("com.demo.app.icue.hellow
-orld.businesslogic.HelloWorld").asInstanceOf[HelloWorld]
-
-     def getReference: Reference = context.getBean("com.demo.app.common.refere
-nce.businesslogic.Reference").asInstanceOf[Reference]
-
+     def getHelloWorld: HelloWorld = context.getBean("com.demo.app.icue.helloworld.businesslogic.HelloWorld").asInstanceOf[HelloWorld]
+     def getReference: Reference = context.getBean("com.demo.app.common.reference.businesslogic.Reference").asInstanceOf[Reference]
     }
+```
 
 The places we found some sample code from are listed in the object javadoc.
 Essentially this is loading the [Class]Impl files from the spring context.  So
@@ -81,13 +62,9 @@ Java.List -> Buffer -> Scala.List-> Map was the best approach for this, but it
 worked and it served the purpose for the prototype and might be useful for
 more people in the future.  Cheers!
 
-
-    def getReference(referenceName: String) =  {
-
-     val values = scala.collection.JavaConversions.asBuffer(LiftUtils.getRefer
-ence.list(referenceName))
-
+``` scala
+    def getReference(referenceName: String) = {
+     val values = scala.collection.JavaConversions.asBuffer(LiftUtils.getReference.list(referenceName))
      values.toList.map(v => (v.getReferenceCode, v.getReferenceDesc))
-
      }
-
+```
