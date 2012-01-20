@@ -23,8 +23,7 @@ tags:
 I have been doing some at-work analysis on Lift and Scala.  I really like it
 so far despite the drawbacks of poor code examples available online.  I also
 have some personal projects that I am working on at home and wanted to expand
-my knowledge of other frameworks so I decided to check out the [Play!
-Framework][1].
+my knowledge of other frameworks so I decided to check out the [Play! Framework][1].
 
 I ran through the [Learn][2] link on the site for the new 1.1 framework.  It
 got me up and running in no time flat.  I was able to see the default page in
@@ -52,106 +51,72 @@ slight differences in what code is required to actually get their examples to
 work.  For example their code had the following code to access a Jpa class
 within a test.
 
-
+``` java
     import models.User
-
     import org.scalatest.matchers.ShouldMatchers
-
     import play.test._
 
     class SpecStyle extends UnitFlatSpec with ShouldMatchers {
-
     "Creating a user" should "be succesfull" in {
-
      val user = new User("bob@gmail.com", "secret", "Bob").save()
-
      val bob = User.find("byEmail", "bob@gmail.com").first
-
      bob should not be (null)
-
      bob.fullname should be ("Bob")
-
      }
-
     }
+```
 
 I had to use the following to get the code to run.  I am not sure if I did
 something wrong or of the example code was wrong but here is what I had to do
 to get it working.
 
-
+``` java
     import models.User
-
     import org.scalatest.matchers.ShouldMatchers
-
     import play.test._
-
+    
     class SpecStyle extends UnitFlatSpec with ShouldMatchers {
-
     "Creating a user" should "be succesfull" in {
-
      val user = new User("bob@gmail.com", "secret", "Bob").save()
-
      val bob = User.find("byEmail", "bob@gmail.com").first
-
      bob should not be (null)
-
      bob.get.fullname should be ("Bob")
-
      }
-
     }
+```
 
 The only thing that is different is the fact that I had to call the get on
 bob.get.fullname as calling bob.firstname wasn't getting me a User object that
 I could check properties on.  If anyone has any ideas on this by all means let
 me know.  Here is the user class/object.
 
-
+``` java
     package models
-
     import java.util._
-
     import play.db.jpa._
-
     import play.data.Validators._
 
     @Entity
-
-    @Table(uniqueConstraints=Array(new
-UniqueConstraint(columnNames=Array("email"))))
-
+    @Table(uniqueConstraints=Array(new UniqueConstraint(columnNames=Array("email"))))
     class User(
-
      @Email
-
      @Required
-
      var email: String,
 
      @Required
-
      var password: String,
-
      var fullname: String
-
     ) extends Model {
-
      var isAdmin = false
-
      override def toString() = email
-
     }
 
     object User extends QueryOn[User] {
-
      def connect(email: String, password: String) = {
-
      find("byEmailAndPassword", email, password).first
-
      }
-
     }
+```
 
 What I really love about the play framework is the integrated testing,
 especially with Selenium, that comes for free with the framework.  More on
@@ -162,12 +127,7 @@ On a side note, I have been using my Mac more and more for development I
 really like it now that I have a two button mouse... :)
 
    [1]: http://www.playframework.org/ (Play! Framework)
-
    [2]: http://www.playframework.org/documentation/1.1-trunk/home
-
-   [3]: http://www.christianoestreich.com/wp-content/uploads/2010/09/Screen-
-shot-2010-09-15-at-8.11.21-PM.png (Play! Framework Setup)
-
-   [4]: http://www.christianoestreich.com/wp-content/uploads/2010/09/Screen-
-shot-2010-09-15-at-8.11.21-PM.png
+   [3]: http://build.christianoestreich.com/wp-content/uploads/2010/09/Screen-shot-2010-09-15-at-8.11.21-PM.png (Play! Framework Setup)
+   [4]: http://build.christianoestreich.com/wp-content/uploads/2010/09/Screen-shot-2010-09-15-at-8.11.21-PM.png
 
