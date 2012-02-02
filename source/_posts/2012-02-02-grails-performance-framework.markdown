@@ -153,19 +153,19 @@ Once one or more jobs are configured and redis is running you can `run-app` and 
 
 The main admin console view:
 
-{% img images/gperf/admin1.jpg %}
+{% img /images/gperf/admin1.jpg %}
 
 Clicking the start button and using ajax to collect some results:
 
-{% img images/gperf/admin2.jpg %}
+{% img /images/gperf/admin2.jpg %}
 
 A view of the list all keys feature.  Some keys are clickable if they contain more details of data to view:
 
-{% img images/gperf/listkeys.jpg %}
+{% img /images/gperf/listkeys.jpg %}
 
 A detailed view of a success queue:
 
-{% img images/gperf/viewqueue.jpg %}
+{% img /images/gperf/viewqueue.jpg %}
 
 [redis]: http://www.grails.org/plugin/redis (Redis Plugin)
 [jesque]: http://www.grails.org/plugin/jesque (Jesque Plugin)
