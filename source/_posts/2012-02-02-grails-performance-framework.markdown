@@ -21,7 +21,7 @@ tags:
 - executor
 ---
 
-I built a _relatively_ simple framework to do performance testing of code using [redis][redis], [jesque][jesque] and [executor][executor].  It uses some jQuery and ajax on the front end and provides a relatively simple administrative UI.  The code is currently availabe on [github][github].  The overhead of the perf runner is relatively light since and extremely fast as it is using [redis][redis] as its storage mechanism for queues, jobs, statistics, and status.  If you would like to change where or how the results are saved you could certainly hac the code in the ResultsService.
+I built a _relatively_ simple framework to do performance testing of code using [redis][redis], [jesque][jesque] and [executor][executor].  It uses some jQuery and ajax on the front end and provides a relatively simple administrative UI.  The code is currently availabe on [github][github].  The overhead of the perf runner is relatively light since and extremely fast as it is using [redis][redis] as its storage mechanism for queues, jobs, statistics, and status.  If you would like to change where or how the results are saved you could certainly hack the code in the ResultsService.
 
 <!-- more -->
 
