@@ -161,7 +161,7 @@ Clicking the start button and using ajax to collect some results:
 
 A view of the list all keys feature.  Some keys are clickable if they contain more details of data to view:
 
-{% img http://www.christianoestreich.com/images/gperf/listkeys.jpg %}
+{% img /images/gperf/listkeys.jpg %}
 
 A detailed view of a success queue:
 
