@@ -19,7 +19,9 @@ tags:
 - transformation
 ---
 
-Recently I was developing a prototype application for doing performance testing using [redis][redis] and [jesque][jesque] (see [post][post]) I got to thinking "why doesn't the redis plugin currently have support for annotation based memoization like spring cache?"  I figured I would set out to add that support and get to learn to write [Groovy AST Transformations][ast] at the same time.  The process was long and arduous and I learned a lot during my several weeks of coding.
+Grails Redis Plugin Memoization Annotation Transformation (A Retrospective on Groovy AST)
+
+Recently while developing a prototype application for performance testing using [redis][redis] and [jesque][jesque] (see [post][post]) I got to thinking "why doesn't the grails redis plugin currently have support for annotation based memoization like spring cache?"  I figured I would set out to add that support and learn to write [Groovy AST Transformations][ast] at the same time.  The process was long and arduous and I learned a lot during my several weeks of coding.
 
 <!-- more -->
 
