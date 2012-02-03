@@ -28,33 +28,33 @@ Recently I was developing a prototype application for doing performance testing 
 I started off by reading articles on AST and found many great examples of existing AST transformations, blogs, and tests already written that I could leverage.  Here are some if you are looking for additional resources:
 
 * [Memoization AST Transformation Source Code][github]
-* [AST Builder Examples][http://svn.codehaus.org/groovy/trunk/groovy/groovy-core/src/test/org/codehaus/groovy/ast/builder/AstBuilderFromSpecificationTest.groovy]
+* [AST Builder Examples][ast1]
 * [Lessons Learnt Developing Groovy AST Transformations][lessons]
-* [Local AST Transformations][http://groovy.codehaus.org/Local+AST+Transformations]
-* [Building AST Guide][http://groovy.codehaus.org/Building+AST+Guide]
-* [Groovy AST Transformations by Example: Adding Methods to Classes][http://java.dzone.com/articles/groovy-ast-transformations]
-* [AST Transformations: Creating a Complex AST Transformation][http://joesgroovyblog.blogspot.com/2011/10/ast-transformation-using-astbuilder.html]
-* [AST Transformations: Compiler Phases and Syntax Trees][http://joesgroovyblog.blogspot.com/2011/09/ast-transformations-compiler-phases-and.html]
-* [AST Transformations: The transformation itself][http://joesgroovyblog.blogspot.com/2011/09/ast-transformations-transformation.html]
-* [Unit Testing AST][http://blog.andresteingress.com/2010/06/18/unit-testing-groovy-ast-transformations/]
+* [Local AST Transformations][localast]
+* [Building AST Guide][buildingastguide]
+* [Groovy AST Transformations by Example: Adding Methods to Classes][example1]
+* [AST Transformations: Creating a Complex AST Transformation][transform1]
+* [AST Transformations: Compiler Phases and Syntax Trees][transform2]
+* [AST Transformations: The transformation itself][transform3]
+* [Unit Testing AST][unit]
 
-There are a lot more out there in the world and you can find plenty [here][http://lmgtfy.com/?q=groovy+ast].
+There are a lot more out there in the world and you can find plenty [here][lmgtfy].
 
 ## The End Goal
 
-The end goal was pretty simple; to transform an annotated method like method1 (below) during compile time into something that looked like method2 (below) at runtime.  Using an annotation with a key, expire, etc. and injecting code that would wrap all the method contents into a call to an appropriate redisService.memoize method.  I would then create memoize annotations for each type of memoize to be performed (domain, list, hash, set, etc).
+The end goal was pretty simple; to transform an annotated method like the first below during compile time into something that looked like the second method below at runtime.  Using an annotation with a key, expire, etc. and injecting code that would wrap all the method contents into a call to an appropriate redisService.memoize method.  I would then create memoize annotations for each type of memoize to be performed (domain, list, hash, set, etc).
 
 Turn this:
 ``` groovy
     @Memoize(key = '#{text}')
-    def method1(String text, Date date) {
+    def method(String text, Date date) {
         return "$text $date"
     }
 ```
 
 Into this:
 ``` groovy
-    def method2(String text, Date date) {
+    def method(String text, Date date) {
         return redisService.memoize(text) {
             return "$text $date"
         }
@@ -140,8 +140,8 @@ Again to save headache I discovered, through a miracle I think, the following co
 
 Running this at the end of the main visit method caused all the variable scopes to be correct propagated down to the newly created objects I was using, including the ClosureExpression.
 
-* [API Docs][http://groovy.codehaus.org/api/org/codehaus/groovy/classgen/VariableScopeVisitor.html]
-* [Sample Usage][http://www.devdaily.com/java/jwarehouse/groovy/src/main/org/codehaus/groovy/tools/javac/JavaAwareCompilationUnit.java.shtml]
+* [API Docs][api]
+* [Sample Usage][sample]
 
 Having inspected the source, I can best describe what it does as _aligning the correct variable scope inheritance in your class_.  There is an explicit visitClosureExpression method that does the magic and injects the scoped variables into the closure.  Following code that uses the visitor pattern is a bit tedious at times, but that is the best I can surmise from digging through that code.  Here is a snippet from the VariableScopeVisitor.java class:
 
@@ -262,3 +262,14 @@ The memoization AST transformation code I am referencing here is available at [g
 [jdgui]: http://java.decompiler.free.fr/?q=jdgui (JD-GUI)
 [lessons]: http://grails.io/post/15965611310/lessons-learnt-developing-groovy-ast-transformations
 [github]: https://github.com/grails-plugins/grails-redis/tree/master/src/groovy/grails/plugin/redis (Memoization AST Transformation Code)
+[ast1]: http://svn.codehaus.org/groovy/trunk/groovy/groovy-core/src/test/org/codehaus/groovy/ast/builder/AstBuilderFromSpecificationTest.groovy
+[localast]: http://groovy.codehaus.org/Local+AST+Transformations
+[buildingastguide]: http://groovy.codehaus.org/Building+AST+Guide
+[example1]: http://java.dzone.com/articles/groovy-ast-transformations
+[transform1]: http://joesgroovyblog.blogspot.com/2011/10/ast-transformation-using-astbuilder.html
+[transform2]: http://joesgroovyblog.blogspot.com/2011/09/ast-transformations-compiler-phases-and.html
+[transform3]: http://joesgroovyblog.blogspot.com/2011/09/ast-transformations-transformation.html
+[unit]: http://blog.andresteingress.com/2010/06/18/unit-testing-groovy-ast-transformations/
+[lmgtfy]: http://lmgtfy.com/?q=groovy+ast
+[api]: http://groovy.codehaus.org/api/org/codehaus/groovy/classgen/VariableScopeVisitor.html
+[sample]: http://www.devdaily.com/java/jwarehouse/groovy/src/main/org/codehaus/groovy/tools/javac/JavaAwareCompilationUnit.java.shtml
