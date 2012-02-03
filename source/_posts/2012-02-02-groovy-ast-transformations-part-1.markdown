@@ -16,6 +16,8 @@ tags:
 - groovy
 - ast
 - transform
+- memoize
+- memoization
 - transformation
 ---
 
