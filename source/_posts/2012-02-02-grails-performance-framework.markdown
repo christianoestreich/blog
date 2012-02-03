@@ -27,7 +27,7 @@ I built a _relatively_ simple framework to do performance testing of code using 
 
 ## Detailed Description
 
-Using a web admin console, configured jobs can be submitted to a queue in jesque with a type (workerClass) and number of threads to use.  A jesque worker will then pick up the queued jobs and spawn off a number of worker threads using executor.  These threads will continue to run until the user then stops the job via the admin console.  Results will be updated real-time to the screen using a custom ajax enabled jQuery widget.
+Using a web admin console, configured jobs can be submitted via ajax to a queue in jesque with a type (workerClass) and number of threads to run.  A jesque worker will then pick up the queued jobs and spawn off a number of worker threads using executor.  These threads will continue to run until the user then stops the job via the admin console. Stopping the job is essentially flipping an active flag for the job to false in the datastore ([redis][redis]).  Ther results will be updated near-time on the screen using a custom ajax enabled jQuery widget that polls and aggregates the data from redis.  These operations are extremely fast due to the speed of [redis][redis].
 
 The admin console provides the following functionality:
 
@@ -35,6 +35,8 @@ The admin console provides the following functionality:
  * List all keys in Redis
  * Clear all results
  * Clear all data (Flush Redis Database)
+
+See the sequence diagram below for a UML view of how the system operates.
 
 _There may be a slight delay in the updating of statistics both when starting and stopping the tests as the jQuery widget only updates stats every 5s._
 
@@ -141,7 +143,11 @@ To wire up the LargeNumberPerformanceService job above to show up in the admin c
     }
 ```
 
-I have not tested a large number of jobs, but having several available to run would be okay.  If you tried to run several jobs with large thread pools, you will probably experience inaccurate results as your maching struggles to keep up.  Leaving the job service classes but simply commenting out the jobName block in the config will cause the admin console to not list the job for running and should take up no overhead.
+Note: I have not tested a large number of jobs, but having several available to run would be okay.  If you tried to run several jobs with large thread pools, you will probably experience inaccurate results as your machine struggles to keep up.  Leaving the job service classes in place but simply commenting out the jobName block in the config will cause the admin console to not list the job for running and should take up no overhead while essentially disabling the job.
+
+## Simplified Sequence Diagram
+
+{% img /images/gperf/processflow.png %}
 
 ## Running the Application
 
