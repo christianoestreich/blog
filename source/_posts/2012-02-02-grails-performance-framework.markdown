@@ -25,9 +25,13 @@ I built a _relatively_ simple framework to do performance testing of code using 
 
 <!-- more -->
 
+## Update 2/7/12
+
+I have made some slight changes to the framework and have updated this post and docs to illustrate the changes.  More specifically I have moved the Result interface and Result inheritors into the src/groovy directory as domain object support isn't currently required and was causing a bit of an issue during jsonification.
+
 ## Detailed Description
 
-Using a web admin console, configured jobs can be submitted via ajax to a queue in jesque with a type (workerClass) and number of threads to run.  A jesque worker will then pick up the queued jobs and spawn off a number of worker threads using executor.  These threads will continue to run until the user then stops the job via the admin console. Stopping the job is essentially flipping an active flag for the job to false in the datastore ([redis][redis]).  Ther results will be updated near-time on the screen using a custom ajax enabled jQuery widget that polls and aggregates the data from redis.  These operations are extremely fast due to the speed of [redis][redis].
+Using a web admin console, configured jobs can be submitted via ajax to a queue in jesque with a type (workerClass) and number of threads to run.  A jesque worker will then pick up the queued jobs and spawn off a number of worker threads using executor.  These threads will continue to run until the user then stops the job via the admin console.  Stopping the job is essentially flipping an active flag for the job to false in the datastore ([redis][redis]).  Ther results will be updated near-time on the screen using a custom ajax enabled jQuery widget that polls and aggregates the data from redis.  These operations are extremely fast due to the speed of [redis][redis].
 
 The admin console provides the following functionality:
 
@@ -42,9 +46,9 @@ _There may be a slight delay in the updating of statistics both when starting an
 
 ## Create A Job
 
-To create a new performance job simple create a new service in the services/com/perf/runners directory.  I have 3 sample runners created in this project.  It is important that you extend the `AbstractPerformanceService` and implement the `performTest` method.
+To create a new performance job simply create a new service in the services/com/perf/runners directory.  I have 3 sample jobs created in the base project.  It is important that you extend the `AbstractPerformanceService` and implement the `performTest` method.
 
-The abstract service comtains a benchmark method to use to encapsulate a call you wish to time and it will return the execution time.
+The abstract service contains a benchmark method that accepts a closure which you should use to encapsulate the code you wish to time.  The benchmark method will return the time in ms the closure took to execute.
 
 ``` groovy
     class LargeNumberPerformanceService extends AbstractPerformanceService {
@@ -55,37 +59,51 @@ The abstract service comtains a benchmark method to use to encapsulate a call yo
                     result += it
                 }
             }
-            new Result(testName: 'Long Number Performance Service', executionTime: executionTime)
+            new SimpleResult(testName: 'Long Number Performance Service', executionTime: executionTime)
         }
     }
 ```
 
-This method performTest must return a Result object.  Currently this object is pretty simple and the framework certainly has room for enahancement to support more complex types of results.
+This method performTest must return a Result interface as this will be used to log into the results data cache in redis.  I have two types of results, SimpleResult and ComparisonResult, that both inherit from Result and are demonstrated in the project.  Users are free to add their own types of result objects if they need more fields.
 
 ``` groovy
-    class Result implements Serializable {
+     interface Result {
+         String testName
+         String details
+         Integer executionTime
+         Date createDate
+         Boolean isError
+     }
+
+```
+
+``` groovy
+    @ToString(includeNames = true, includeFields = true, excludes = "class, id")
+    class SimpleResult implements Serializable, Result {
+
         String testName
         String details
         Integer executionTime = 0
         Date createDate = new Date()
         Boolean isError = false
-
-        public String toString() {
-            "testName=" + testName +
-            "&details=" + details +
-            "&executionTime=" + executionTime +
-            "&createDate=" + createDate +
-            "&isError=" + isError
-        }
     }
 ```
+
+``` groovy
+    @ToString(includeNames = true, includeFields = true, excludes = "class, id")
+    class ComparisonResult extends SimpleResult {
+        String result1
+        String result2
+    }
+```
+
+Result Interface Fields:
 
     testName - This can be an abitrary value that you would like, simply used when displaying detailed results view.
     details - If you would like to put any specific output from the test like facts, figures, etc. you can do so in the details field.
     executionTime - This should be the value of the result from the benchmark method.  You could roll your own timing schema and put that value here.
     createDate - The date, defaulted to now, simply used when displaying detailed results view.
     isError - This will cause the result to be logged into the error queue.  You should set this if an error condition occurs perhaps in a try catch or when unexpected results are reached.
-    toString() - This method is used when doing a _soft marshall_ of the object into redis.  The object is stored as a string and reconstititued when viewing the results page.
 
 Here is an example of a test the may set the error flag if the results are empty or an exception occurs:
 
@@ -102,7 +120,7 @@ Here is an example of a test the may set the error flag if the results are empty
             }
         }
 
-        new Result(details: quote, isError: (isError || !quote), executionTime: duration, testName: 'Stock Quote Performance Service')
+        new SimpleResult(details: quote, isError: (isError || !quote), executionTime: duration, testName: 'Stock Quote Performance Service')
     }
 ```
 
