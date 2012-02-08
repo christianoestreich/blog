@@ -56,113 +56,76 @@ for these scripts where adding it back would be useful.
 
 The script contains the following code.
 
-
+``` groovy
     import static groovyx.gpars.GParsPool.withPool
-
     import org.codehaus.groovy.grails.commons.ConfigurationHolder as CH
 
     def blahStressTest = {
-
         String path = CH.config.dataDir + File.separator + "mydata.xml"
 
         println "Loading ${path}.."
 
         def theData = new XmlSlurper().parseText(new File(path).text)
-
         def size = theData.ROWSET.ROW.size()
 
         withPool(3) {
-
                 medData.ROWSET.ROW.eachWithIndexParallel { object, index ->
-
                         try{
-
-                                def url = new
-URL("${CH.config.grails.serverURL}/resturl/${object}").text
-
-                    if (index % 100 == 0) println
-"${Thread.currentThread().name} - ${index} of ${size}"
-
+                                def url = new URL("${CH.config.grails.serverURL}/resturl/${object}").text
+                    if (index % 100 == 0) println "${Thread.currentThread().name} - ${index} of ${size}"
                                 Thread.sleep(100)
-
                         } catch(Exception e){
-
                                 println "exception ${e.message}"
-
                         }
-
                 }
-
         }
 
         println "completed"
-
     }.call()
+```
 
 I added the following to the config and put a different path under each
 environment section as the directory structure is a bit different in each. I
 really have no need to run this in prod for now, but I might in the future.
 
-
+``` groovy
     environments {
-
       production {
-
         grails.serverURL = "https://url"
-
         logDirectory = "/unix/path/logs"
-
         dataDir = "/unix/projects/myproject/scripts/performance"
-
      }
 
       development {
-
         grails.serverURL = "http://localhost:8080/${appName}"
-
         logDirectory = "/windows/path/log"
-
         dataDir = "c:/projects/myproject/scripts/performance"
-
       }
 
       test {
-
         grails.serverURL = "http://testserver:8080/${appName}"
-
         logDirectory = "/unix/path/logs"
-
         dataDir = "/unix/projects/myproject/scripts/performance"
-
       }
-
     }
+```
 
 My xml file is in the same directory as the scripts for now.  It just has some
 data that looks like this (as exported directly from dbvis).
 
-
+``` xml
     <MyData>
-
     <ROWDATA>
-
     <ROW>
-
     <ID>123</ID>
-
     </ROW>
-
     <ROW>
-
     <ID>1234</ID>
-
     </ROW>
-
     ...
-
     </ROWDATA>
-
     </MyData>
+```
 
 I really just wanted to load up all the objects in cache without any object
 misses.  I tried doing a 1..100000 type operation, but the IDs of the data I
@@ -174,7 +137,6 @@ I launched the grails shell using (use which ever env you want to run it for):
     grails dev shell
 
 Once launched I simply type
-
 
     load scripts\performance\MyScript.groovy
 
@@ -191,32 +153,22 @@ FYI: To configure the spring cache plugin manually you need to add a file
 under the cong\spring folder called resources and add some code like the
 following:
 
-
+``` groovy
     import grails.plugin.springcache.web.key.WebContentKeyGenerator
-
     import org.springframework.cache.ehcache.EhCacheFactoryBean
 
     // Place your Spring DSL code here
-
     beans = {
-
        MyCache(EhCacheFactoryBean) { bean ->
-
         cacheManager = ref("springcacheCacheManager")
-
         cacheName = "MyCache"
-
         eternal = true
-
         diskPersistent = false
-
         memoryStoreEvictionPolicy = "LRU"
-
         maxElementsInMemory = 100000
-
       }
-
     }
+```
 
 Anywhere you use the @Cachable("MyCache") it will use this configuration
 instead of the default.
