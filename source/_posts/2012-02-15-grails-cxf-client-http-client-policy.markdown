@@ -19,7 +19,7 @@ tags:
 - plugin
 - soap
 ---
-The [Grails cxf-client plugin][1] has been updated to version 1.2.7.  I added the ability to specify timeouts (connection and receive) and allow chunking separately through params and also provided another parameter to pass the client name of an HTTPClientPolicy bean to use instead of setting the params seperately.
+The [Grails cxf-client plugin][1] has been updated to version 1.2.7.  I have added the ability to specify timeouts (connection and receive) and allow chunking separately through params and also provided another parameter to pass the client name of an HTTPClientPolicy bean to use instead of setting the params seperately.
 
 <!-- more -->
 
