@@ -25,13 +25,14 @@ The [Grails cxf-client plugin][1] has been updated to version 1.2.7.  I have add
 
 The following partial documentation is available in full at [https://github.com/ctoestreich/cxf-client][2]
 
-<table style="border:1px !important">
-<tr><td><b>Property</b></td><td><b>Description</b></td><td>Required</b></td></tr>
-<tr><td>connectionTimeout</td><td>Specifies the amount of time, in milliseconds, that the client will attempt to establish a connection before it times out. The default is 30000 (30 seconds). 0 specifies that the client will continue to attempt to open a connection indefinitely. (default: 30000)</td><td>No</td></tr>
-<tr><td>receiveTimeout</td><td>Specifies the amount of time, in milliseconds, that the client will wait for a response before it times out. The default is 60000. 0 specifies that the client will wait indefinitely. (default: 60000)</td><td>No</td></tr>
-<tr><td>allowChunking</td><td>If true will set the HTTPClientPolicy allowChunking for the clients proxy to true. (default: false)</td><td>No</td></tr>
-<tr><td>httpClientPolicy</td><td>Instead of using the seperate timeout, chunking, etc values you can create your own HTTPClientPolicy bean in resources.groovy and pass the name of the bean here. <B>This will override the connectionTimeout, receiveTimeout and allowChunking values.</b> (default: null)</td><td>No</td></tr>
-</table>
+
+|Property|Description|Required|
+|:-----------|------------:|:------------|
+|connectionTimeout|Specifies the amount of time, in milliseconds, that the client will attempt to establish a connection before it times out. The default is 30000 (30 seconds). 0 specifies that the client will continue to attempt to open a connection indefinitely. (default: 30000)|No|
+|receiveTimeout|Specifies the amount of time, in milliseconds, that the client will wait for a response before it times out. The default is 60000. 0 specifies that the client will wait indefinitely. (default: 60000)|No|
+|allowChunking|If true will set the HTTPClientPolicy allowChunking for the clients proxy to true. (default: false)|No|
+|httpClientPolicy|Instead of using the seperate timeout, chunking, etc values you can create your own HTTPClientPolicy bean in resources.groovy and pass the name of the bean here. <B>This will override the connectionTimeout, receiveTimeout and allowChunking values.</b> (default: null)|No|
+
 
 Here is an example cxf client configuration block using the connectionTimeout, receiveTimeout and allowChunking parameters:
 
