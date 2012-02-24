@@ -18,13 +18,19 @@ tags:
 - helper
 - soap
 ---
-I am creating a hello world grails project for internal use here at our company.  The project encapsulates both the source code and the documentation in gdoc format.  When a new user comes onboard, they get the project from the source repository and then run the `grails doc` target to generate the guide locally with a tutorial on building a simple application.  In the project I have already included a full test suite that should pass when the tutorial is completed.  I needed a way to have my version control ignored domain, service, and controllers that I was using be added in a way that kept them out of the base grails-app directory so the user could generate them.  At the same time I really wanted to put a link to what the finished classes would look like in the docs somewhere to help users along during the process if needed.  During this process I only wanted to have one master file and not have to maintain the code blocks in the gdoc files separately from actual code.
+I am creating a hello world grails project for internal use here at our company.  The project encapsulates both the source code and the documentation in gdoc format.  When a new user comes onboard, they get the project from the source repository and then run the `grails doc` target to generate the guide locally with a tutorial on building a simple application.  In the project I have already included a full test suite that should pass when the tutorial is completed.
+
+I needed a way to have my version control ignored domain, service, and controllers that I was using be added in a way that kept them out of the base grails-app directory so the user could generate them.  At the same time I really wanted to put a link to what the finished classes would look like in the docs somewhere to help users along during the process if needed.  During this process I only wanted to have one master file and not have to maintain the code blocks in the gdoc files separately from actual code.
 
 <!-- more -->
 
-As I wrote the hello world tutorial I was in effect writting a simple application at the same time.  As I want the user to create all their own artifacts, I added them to my ignore list in version control.  This worked great and allowed me to build the docs and grab snippets of code for the gdoc and still maintain a shell of a project for users to be able to add these artifacts on their own when they followed the guide.  Alas, I really didn't want to just throw away these objects I was creating or leave them on my machine only.  I came up with a way for me to have the best of both worlds by using a Grails script that executes a few simple ant tasks.  I figured I would backup the files into another directory that was checked in as well as generate gdocs out of the code directly at the same time.
+#### Background ####
 
-#### Creating the Script ####
+As I wrote the hello world tutorial I was in effect writting a simple application at the same time.  As I want the user to create all their own artifacts, I added them to my ignore list in version control.  This worked great and allowed me to build the docs and grab snippets of code for the gdoc and still maintain a shell of a project for users to be able to add these artifacts on their own when they followed the guide.
+
+Alas, I really didn't want to just throw away these objects I was creating or leave them on my machine only.  I came up with a way for me to have the best of both worlds by using a Grails script that executes a few simple ant tasks.  I figured I would backup the files into another directory that was checked in as well as generate gdocs out of the code directly at the same time.
+
+#### Creating A Backup Script ####
 
 I created a script in the `scripts` directory of the project named `GenerateDocs.groovy` which would allow me to copy the sources (in my case a directory named `answers` at the project root), generate the gdoc, and run the docs task in one command by invoking the target:
 
@@ -111,7 +117,7 @@ class Person {
 
 That would show up in the generated doc pages as the following:
 
-{% img /images/doc/script.jpg %}
+{% img /images/docs/script.jpg %}
 
 #### The Whole Script ####
 
