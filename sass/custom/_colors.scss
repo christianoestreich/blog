@@ -49,7 +49,7 @@ $main-color:  #1C81E6;
 $page-bg: darken($main-color,100);
 
 //This controls the header.
-$header-bg: #66666; //darken($main-color,5);
+$header-bg: #666666; //darken($main-color,5);
 $title-color: lighten($header-bg,100);
 $subtitle-color: $main-color; //lighten($title-color,0);
 
