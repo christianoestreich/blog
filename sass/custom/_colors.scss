@@ -42,22 +42,22 @@
 //$pre-border: darken($base02, 5);
 //$pre-color: $base1;
 
-$main-color:  #246266;
+$main-color:  #1C81E6;
 
 //This controls the background.
 /*$page-bg: lighten($main-color,20);*/
-$page-bg: lighten($main-color,5);
+$page-bg: darken($main-color,100);
 
 //This controls the header.
-$header-bg: darken($main-color,5);
+$header-bg: #66666; //darken($main-color,5);
 $title-color: lighten($header-bg,100);
-$subtitle-color: lighten($title-color,0);
+$subtitle-color: $main-color; //lighten($title-color,0);
 
 //This controls the navigation bar
 $nav-bg: desaturate(darken($main-color, 10), 60);
 $nav-bg-back: linear-gradient(lighten($nav-bg, 8), $nav-bg, darken($nav-bg, 11));
 $nav-link-color: lighten($main-color, 20);
-$nav-link-color-hover: lighten($main-color, 100);
+$nav-link-color-hover: lighten($main-color, 80);
 $nav-link-color-visited: lighten($main-color, 20);
 
 //This controls the sidebar
