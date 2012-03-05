@@ -20,7 +20,7 @@ tags:
 - plugin
 - soap
 ---
-The [Grails cxf-client plugin][1] has been updated to version 1.2.8.  When I first deployed the plugin I overlooked allowing checked exceptions and soap faults to bubble out of the client proxy appropriately.  I modified the plugin to allow this now.  In addition I added a configuration parameter for proxyFactoryBindingId to allow soap 1.2 (set to "http://schemas.xmlsoap.org/wsdl/soap12/").
+The [Grails cxf-client plugin][1] has been updated to version 1.2.9.  When I first deployed the plugin I overlooked allowing checked exceptions and soap faults to bubble out of the client proxy appropriately.  I modified the plugin to allow this now.  In addition I added a configuration parameter for proxyFactoryBindingId to allow soap 1.2 (set to "http://schemas.xmlsoap.org/wsdl/soap12/").
 
 #### Updated Parameter Documentation ####
 
