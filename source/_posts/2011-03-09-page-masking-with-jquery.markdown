@@ -107,7 +107,7 @@ encompass the while page content. I just put this after the body tag
 
 with this JavaScript
 
-``` javscript
+``` javascript
             var maskInterval;
             var maskTimeout = 30;
             var maskLoop = 1;
