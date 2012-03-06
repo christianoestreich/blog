@@ -1,0 +1,15 @@
+---
+author: ctoestreich
+date: '2010-09-07 09:28:09'
+layout: page
+slug: 404
+status: publish
+title: 404
+---
+<p align="center">
+{% img /images/warning.jpg %}
+<BR>
+Page Not Found.  [Home][Home] 
+</p>
+
+[Home]: http://www.christianoestreich.com/index.html
