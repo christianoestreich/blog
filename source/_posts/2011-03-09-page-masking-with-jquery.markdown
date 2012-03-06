@@ -31,18 +31,15 @@ the user from trying to click around and lets them know that something really
 happened when they clicked the button as not all users look to the browser
 icons spinning or status bar for details.
 
-
+``` javascript
     function doLoadingMask() {
-
         doLoadingMaskText('Loading...');
-
     }
 
     function doLoadingMaskText(loadingText) {
-
         Ext.get("loading-mask").mask(loadingText, 'x-mask-loading');
-
     }
+```
 
 We ran into a problem that occurred very infrequent that would cause the form
 submit to hang for a long time... or indefinitely.  With the mask remaining on
@@ -53,57 +50,37 @@ reattempt the action of leave the page and come back.  The 30 second timeout
 does not stop the form submission from attempting to continue so given they
 leave it alone long enough it still might complete after the mask disappears.
 
-
+``` javascript
     function doLoadingMask() {
-
         doLoadingMaskText('Loading...');
-
     }
 
     var maskInterval;
-
     var maskTimeout = 30;
-
     var maskLoop = 1;
 
     function doLoadingMaskText(loadingText) {
-
         Ext.get("loading-mask").mask(loadingText, 'x-mask-loading');
-
         maskLoop = 1;
-
         maskInterval = window.setInterval(maskUpdater, 1000);
-
     }
 
     function undoLoadingMask() {
-
         Ext.get("loading-mask").unmask();
-
         clearInterval(maskInterval);
-
     }
 
     function maskUpdater() {
-
         if(maskLoop >= maskTimeout) {
-
             undoLoadingMask();
-
         } else {
-
             if(maskLoop % 5 === 0) {
-
-                Ext.get("loading-mask").mask("Waiting... " + (maskTimeout -
-maskLoop), 'x-mask-loading');
-
+                Ext.get("loading-mask").mask("Waiting... " + (maskTimeout - maskLoop), 'x-mask-loading');
             }
-
         }
-
         maskLoop++;
-
     }
+```
 
 This simply adds a 1 second interval call to invoke the maskUpdater and when
 the timeout is reached it just unloads the mask.  It also updates the mask
@@ -124,80 +101,50 @@ is the same code as above using jQuery and jQuery UI to accomplish the same
 thing. We use a slightly different setup for the div as it doesn't have to
 encompass the while page content. I just put this after the body tag
 
-
-    <div id="loadingMask" style="display:none"><p align="center"><img
-src="/icue/images/loading.gif">&nbsp;<span id="message">submitting
-data...</span></p></div>
+``` html
+    <div id="loadingMask" style="display:none"><p align="center"><img src="/icue/images/loading.gif">&nbsp;<span id="message">submitting data...</span></p></div>
+```
 
 with this JavaScript
 
-
+``` javscript
             var maskInterval;
-
             var maskTimeout = 30;
-
             var maskLoop = 1;
-
             function maskUpdater() {
-
                 if(maskLoop >= maskTimeout) {
-
                     undoLoadingMask();
-
                 } else {
-
                     if(maskLoop % 5 === 0) {
-
-                        $("#loadingMask").find("#message").html("waiting... "
-+ (maskTimeout - maskLoop));
-
+                        $("#loadingMask").find("#message").html("waiting... " + (maskTimeout - maskLoop));
                     }
-
                 }
 
                 maskLoop++;
-
             }
 
             function doLoadingMask() {
-
                 $("#loadingMask").dialog({
-
                     modal: true,
-
                     width: 200,
-
                     height: 110,
-
                     position: [(window.width / 2),100],
-
                     closeOnEscape: false,
-
                     resizable: false,
-
                     open: function(event, ui) {
-
                         $(".ui-dialog-titlebar-close").hide();
-
                         $(".ui-dialog-titlebar").hide();
-
                         maskLoop = 1;
-
                         maskInterval = setInterval(maskUpdater, 1000);
-
                     }
-
                 });
-
             }
 
             function undoLoadingMask() {
-
                 clearInterval(maskInterval);
-
                 $("#loadingMask").dialog("close");
-
             }
+```
 
 The setup for the dialog is a little more lengthy than the ExtJS version, but
 we have more control around the look and feel of the message box.  The open
@@ -215,28 +162,11 @@ The old mask (content blacked/grayed out for security reasons)
 [![][8]][9]
 
    [1]: http://www.jquery.com (jquery)
-
-   [2]: http://www.christianoestreich.com/wp-
-content/uploads/2011/03/js_size.png (Javascript File Size)
-
-   [3]: http://www.christianoestreich.com/2011/03/page-masking-with-
-jquery/js_size/
-
-   [4]: http://www.christianoestreich.com/wp-
-content/uploads/2011/03/js_oldmask.png (Old Mask)
-
-   [5]: http://www.christianoestreich.com/2011/03/page-masking-with-
-jquery/js_oldmask/
-
-   [6]: http://www.christianoestreich.com/wp-
-content/uploads/2011/03/js_maskoff.png (Mask Off)
-
-   [7]: http://www.christianoestreich.com/2011/03/page-masking-with-
-jquery/js_maskoff/
-
-   [8]: http://www.christianoestreich.com/wp-
-content/uploads/2011/03/js_maskon.png (Mask On)
-
-   [9]: http://www.christianoestreich.com/wp-
-content/uploads/2011/03/js_maskon.png
-
+   [2]: http://www.christianoestreich.com/wp-content/uploads/2011/03/js_size.png (Javascript File Size)
+   [3]: http://www.christianoestreich.com/2011/03/page-masking-with-jquery/js_size/
+   [4]: http://www.christianoestreich.com/wp-content/uploads/2011/03/js_oldmask.png (Old Mask)
+   [5]: http://www.christianoestreich.com/2011/03/page-masking-with-jquery/js_oldmask/
+   [6]: http://www.christianoestreich.com/wp-content/uploads/2011/03/js_maskoff.png (Mask Off)
+   [7]: http://www.christianoestreich.com/2011/03/page-masking-with-jquery/js_maskoff/
+   [8]: http://www.christianoestreich.com/wp-content/uploads/2011/03/js_maskon.png (Mask On)
+   [9]: http://www.christianoestreich.com/wp-content/uploads/2011/03/js_maskon.png

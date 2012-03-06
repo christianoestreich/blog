@@ -129,7 +129,7 @@ example][6] on how to define a basic authentication in interceptor on the
 server side for testing your clients. More specifically refer to [this
 file][7] for sample code on create your own in interceptor or to the [demo
 project file][8] that injects a server side in interceptor.  Perhaps the
-**best documentation **on writing a complex interceptor can be found at the
+**best documentation** on writing a complex interceptor can be found at the
 [Apache CXF][9] site.
 
 These in interceptors are what handle the security request that comes to the

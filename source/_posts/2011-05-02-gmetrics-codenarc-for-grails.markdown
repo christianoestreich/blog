@@ -42,9 +42,7 @@ using the following commands
 
 
     grails install-plugin coverage
-
     grails install-plugin gmetrics
-
     grails install-plugin codenarc
 
 I ran the default targets for gmetrics and codenarc and they both produced
@@ -70,86 +68,53 @@ First I needed to create a script in grails by running
 Then I added the following code to the grails-app\scripts\CodeReports.groovy
 file
 
-
+``` groovy
     includeTargets << grailsScript('Init')
-
     includeTargets << new File("${codenarcPluginDir}/scripts/Codenarc.groovy")
-
     includeTargets << new File("${gmetricsPluginDir}/scripts/Gmetrics.groovy")
-
     configClassname = 'Config'
-
     target(main: "Add some style to the gmetrics report") {
-
       depends(compile, codenarc, gmetrics)
-
       stylizeGmetrics()
-
       stylizeCodenarc()
+   }
 
-    }
-
-    private void stylizeGmetrics() {
-
+   private void stylizeGmetrics() {
       println "add some style to the gmetrics report"
-
       ant.mkdir(dir: 'target/gmetrics')
-
-      ant.xslt style: "reports/gmetrics.xslt", out:
-"target/gmetrics/gmetrics.html", in: 'target/gmetrics.xml'
-
+      ant.xslt style: "reports/gmetrics.xslt", out: "target/gmetrics/gmetrics.html", in: 'target/gmetrics.xml'
       ant.copy(todir: 'target/gmetrics') {
-
         fileset(dir: 'reports') {
-
           include name: 'default.css'
-
           include name: '*.png'
-
           include name: '*.gif'
-
         }
-
       }
-
     }
 
     private void stylizeCodenarc() {
-
       println "Add some style to the codenarc report"
-
       ant.mkdir(dir: 'target/codenarc')
-
-      ant.xslt style: "reports/codenarc.xslt", out:
-"target/codenarc/codenarc.html", in: 'target/codenarc.xml'
-
+      ant.xslt style: "reports/codenarc.xslt", out: "target/codenarc/codenarc.html", in: 'target/codenarc.xml'
       ant.copy(todir: 'target/codenarc') {
-
         fileset(dir: 'reports') {
-
           include name: 'default.css'
-
           include name: '*.png'
-
           include name: '*.gif'
-
         }
-
       }
-
     }
-
     setDefaultTarget(main)
+```
 
 This new script can be called at the command line by running
-
 
     grails code-reports
 
 Some interesting caveats to note.  The paths to the plugins won't resolve
 until you run compile at least one time.  So make sure you invoke the compile
 target directly or through another script like test-app to get the paths all
-set up in grails _**before **_calling code-reports.  I also had some issues
+set up in grails _**before **_ calling code-reports.  I also had some issues
 with out-of-date plugins and had to blow away the grails 1.3.6 working
 directory to get this to work on local machine and ubuntu (build server) for
 my demo project.  It worked no problem on another project... go figure.  Just
@@ -167,44 +132,34 @@ scan your integration and unit test code to so you can remove those lines or
 set them to true.  I am also using a custom codenarc.properties file to
 exclude certain patterns.
 
-
+```
     gmetrics.reportType = 'org.gmetrics.report.XmlReportWriter'
-
     gmetrics.outputFile = 'target/gmetrics.xml'
-
     gmetrics.processTestUnit = false
-
     gmetrics.processTestIntegration = false
-
     codenarc.reportType='xml'
-
     codenarc.reportName='target/codenarc.xml'
-
     codenarc.processTestUnit = false
-
     codenarc.processTestIntegration = false
-
     codenarc.propertiesFile = 'codenarc.properties'
+```
 
 I added the codenarc.properties at the root of the project folder (same dir as
 application.properties).  It has one line.
 
-
-    GrailsStatelessService.ignoreFieldNames=dataSource,scope,sessionFactory,tr
-ansactional,*Service,messageSource,s3Credential,applicationContext,expose,prof
-iled
+```
+    GrailsStatelessService.ignoreFieldNames=dataSource,scope,sessionFactory,transactional,*Service,messageSource,s3Credential,applicationContext,expose,profiled
+```
 
 Add the code below to the end of _grails-app\conf\BuildConfig.groovy. _This
 sets the coverage report to xml for Jenkins to process and excludes the tests.
 
-
+``` groovy
     coverage {
-
         xml = true
-
         exclusions = ["**/*Tests*"]
-
     }
+```
 
 I created a directory at the root of the application called reports to hold my
 report artifacts and xslt files.  These are the files that were provided by
@@ -213,17 +168,13 @@ css as it suits you.  There are few image files that you can grab from my
 [github][8] in addition to the following.
 
 [reports\codenarc.xslt][9]
-
 [reports\gmetrics.xslt][10]
-
 [reports\default.css][11]
 
 So with the script created I ran the following scripts locally to test the
 output
 
-
     grails test-app -coverage
-
     grails code-reports
 
 You should get some output in your target dir like the following
@@ -243,12 +194,11 @@ two plugins
 [][14][HTML Publisher plugin][15]
 
 You will then need to go to the project admin screen and add code-reports to
-your target for your grails build.  Here is mine: _clean "test-app -coverage
---non-interactive" code-reports_
+your target for your grails build.  Here is mine:
 
-_ _
+    clean "test-app -coverage --non-interactive" code-reports
 
-_[![][16]][17]_
+[![][16]][17]
 
 You will then need to add the following to the html report output section and
 coverage configuration to get the reports to show up on the home page of the
@@ -277,73 +227,31 @@ entertaining, use at your own enjoyment.
 All the [source code][2] for this can be found at GitHub.  You can pull it
 down via the command:
 
-
     git clone git@github.com:ctoestreich/jenkins-sandbox.git
 
 
    [1]: http://blog.octo.com/en/analyzing-groovy-grails-code/
-
    [2]: https://github.com/ctoestreich/jenkins-sandbox (Source Code)
-
    [3]: http://www.grails.org/plugin/gmetrics (Gmetrics Plugin)
-
    [4]: http://www.grails.org/plugin/codenarc (Codenarc Plugin)
-
-   [5]: http://mrhaki.blogspot.com/2011/01/groovy-goodness-create-codenarc-
-reports.html (mrhaki)
-
+   [5]: http://mrhaki.blogspot.com/2011/01/groovy-goodness-create-codenarc-reports.html (mrhaki)
    [6]: http://www.mrhaki.com/about/
-
    [7]: http://mrhaki.blogspot.com
-
    [8]: https://github.com/ctoestreich/jenkins-sandbox/tree/master/reports
-
-   [9]: https://github.com/ctoestreich/jenkins-
-sandbox/blob/master/reports/codenarc.xslt
-
-   [10]: https://github.com/ctoestreich/jenkins-
-sandbox/blob/master/reports/gmetrics.xslt
-
-   [11]: https://github.com/ctoestreich/jenkins-
-sandbox/blob/master/reports/default.css
-
-   [12]: http://www.christianoestreich.com/wp-
-content/uploads/2011/05/code_reports_output.png (code_reports_output)
-
-   [13]: http://www.christianoestreich.com/wp-
-content/uploads/2011/05/code_reports_output.png
-
+   [9]: https://github.com/ctoestreich/jenkins-sandbox/blob/master/reports/codenarc.xslt
+   [10]: https://github.com/ctoestreich/jenkins-sandbox/blob/master/reports/gmetrics.xslt
+   [11]: https://github.com/ctoestreich/jenkins-sandbox/blob/master/reports/default.css
+   [12]: http://www.christianoestreich.com/wp-content/uploads/2011/05/code_reports_output.png (code_reports_output)
+   [13]: http://www.christianoestreich.com/wp-content/uploads/2011/05/code_reports_output.png
    [14]: http://wiki.hudson-ci.org/display/HUDSON/Cobertura+Plugin
-
    [15]: http://wiki.hudson-ci.org/display/HUDSON/HTML+Publisher+Plugin
-
-   [16]: http://www.christianoestreich.com/wp-
-content/uploads/2011/05/build_target.png (Build Target)
-
-   [17]: http://www.christianoestreich.com/wp-
-content/uploads/2011/05/build_target.png
-
-   [18]: http://www.christianoestreich.com/wp-
-content/uploads/2011/05/report_target.png (Report Target)
-
-   [19]: http://www.christianoestreich.com/wp-
-content/uploads/2011/05/report_target.png
-
-   [20]: http://www.christianoestreich.com/wp-
-content/uploads/2011/05/jenkins_dashboard.png (Jenkins Dashboard)
-
-   [21]: http://www.christianoestreich.com/wp-
-content/uploads/2011/05/jenkins_dashboard.png
-
-   [22]: http://www.christianoestreich.com/wp-
-content/uploads/2011/05/report_sample1.png (Report Sample Gmetrics)
-
-   [23]: http://www.christianoestreich.com/wp-
-content/uploads/2011/05/report_sample1.png
-
-   [24]: http://www.christianoestreich.com/wp-
-content/uploads/2011/05/report_sample2.png (Report Sample Codenarc)
-
-   [25]: http://www.christianoestreich.com/wp-
-content/uploads/2011/05/report_sample2.png
-
+   [16]: http://www.christianoestreich.com/wp-content/uploads/2011/05/build_target.png (Build Target)
+   [17]: http://www.christianoestreich.com/wp-content/uploads/2011/05/build_target.png
+   [18]: http://www.christianoestreich.com/wp-content/uploads/2011/05/report_target.png (Report Target)
+   [19]: http://www.christianoestreich.com/wp-content/uploads/2011/05/report_target.png
+   [20]: http://www.christianoestreich.com/wp-content/uploads/2011/05/jenkins_dashboard.png (Jenkins Dashboard)
+   [21]: http://www.christianoestreich.com/wp-content/uploads/2011/05/jenkins_dashboard.png
+   [22]: http://www.christianoestreich.com/wp-content/uploads/2011/05/report_sample1.png (Report Sample Gmetrics)
+   [23]: http://www.christianoestreich.com/wp-content/uploads/2011/05/report_sample1.png
+   [24]: http://www.christianoestreich.com/wp-content/uploads/2011/05/report_sample2.png (Report Sample Codenarc)
+   [25]: http://www.christianoestreich.com/wp-content/uploads/2011/05/report_sample2.png
