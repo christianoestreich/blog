@@ -191,6 +191,53 @@ A detailed view of a success queue:
 
 {% img /images/gperf/viewqueue.jpg %}
 
+## PerformanceRunnerJob Class
+
+``` groovy
+class PerformanceRunnerJob {
+    GrailsApplication grailsApplication
+    RedisService redisService
+    ResultsService resultsService
+
+    void perform(jobName, workers) {
+        println "jesque queueing up job ${jobName} with ${workers} threads"
+        Class clazz = grailsApplication.config?.perf?.runners[jobName]?.workerClass
+        if(!clazz) {
+            log.error "Can not start a performance worker without a workerClass defined in the config attribute"
+        }
+        PerformanceService service = (PerformanceService) grailsApplication.mainContext.getBean(clazz)
+
+        if(!grailsApplication.config?.perf?.multiServer) {
+            doWorkAsync(service, jobName, workers)
+        } else {
+            doWork(service, jobName, workers)
+        }
+    }
+
+    private doWorkAsync(service, jobName, workers) {
+        def threads = Integer.parseInt(workers)
+        threads.times {
+            runAsync {
+                doWork(service, jobName, workers)
+            }
+        }
+    }
+
+    private doWork(service, jobName, workers) {
+        println "running ${jobName} on thread :: ${Thread.currentThread().id}"
+        while(redisService.get(jobName) == PerformanceConstants.RUNNING) {
+            Result result = service.performTest()
+            println "blah" + result
+            saveResults(jobName, result)
+        }
+    }
+
+    private void saveResults(String jobName, Result result) {
+        resultsService.saveResults(jobName, result)
+    }
+}
+```
+
 [redis]: http://www.grails.org/plugin/redis (Redis Plugin)
 [jesque]: http://www.grails.org/plugin/jesque (Jesque Plugin)
 [executor]: http://www.grails.org/plugin/executor (Executor Plugin)
