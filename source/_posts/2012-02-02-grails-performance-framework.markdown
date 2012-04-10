@@ -194,64 +194,32 @@ A detailed view of a success queue:
 ## PerformanceRunnerJob Class
 
 ``` groovy
-package com.perf
-
-import com.perf.runners.PerformanceService
-import grails.plugin.redis.RedisService
-import org.codehaus.groovy.grails.commons.GrailsApplication
-import grails.plugin.jesque.JesqueService
-
 class PerformanceRunnerJob {
 
     GrailsApplication grailsApplication
     RedisService redisService
     ResultsService resultsService
-    JesqueService jesqueService
+    def executorService
 
-    void perform(jobName, workers) {
+    def perform(jobName, workers) {
         println "jesque queueing up job ${jobName} with ${workers} threads"
         Class clazz = grailsApplication.config?.perf?.runners[jobName]?.workerClass
         if(!clazz) {
             log.error "Can not start a performance worker without a workerClass defined in the config attribute"
-            return
         }
-
         PerformanceService service = (PerformanceService) grailsApplication.mainContext.getBean(clazz)
-
-        if(!grailsApplication.config?.perf?.multiServer) {
-            println "running async"
-            doWorkAsync(service, jobName, workers)
-        } else {
-            println "running sync"
-            doWork(service, jobName, workers)
-        }
-    }
-
-    /**
-     * will spawn as many threads as their are workers passed in
-     */
-    private doWorkAsync(service, jobName, workers) {
         Integer.parseInt(workers).times {
             runAsync {
-                doWork(service, jobName, workers)
+                println "running ${jobName} on thread :: ${Thread.currentThread().id}"
+                while(redisService.get(jobName) == PerformanceConstants.RUNNING) {
+                    saveResults(jobName, service.performTest())
+                }
             }
         }
     }
 
-    /**
-     * invokes the service and collects and saves the result and puts job back on queue
-     */
-    private doWork(service, jobName, workers) {
-        if(redisService.get(jobName) == PerformanceConstants.RUNNING) {
-            println "running ${jobName} on thread :: ${Thread.currentThread().id}"
-            Result result = service.performTest()
-            println result
-            saveResults(jobName, result)
-            jesqueService.enqueue('gPerfQueue', PerformanceRunnerJob.simpleName, jobName, workers)
-        }
-    }
-
     private void saveResults(String jobName, Result result) {
+        log.debug result
         resultsService.saveResults(jobName, result)
     }
 }
