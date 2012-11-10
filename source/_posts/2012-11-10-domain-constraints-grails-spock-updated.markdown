@@ -575,11 +575,9 @@ is updated.
 
    [1]: https://github.com/ctoestreich/grails-spock-constraints
 
-   [2]: http://jira.grails.org/browse/GPSPOCK-5?focusedCommentId=67107&page=co
-m.atlassian.jira.plugin.system.issuetabpanels%3acomment-tabpanel#comment-67107
+   [2]: http://jira.grails.org/browse/GPSPOCK-5?focusedCommentId=67107&page=com.atlassian.jira.plugin.system.issuetabpanels%3acomment-tabpanel#comment-67107
 
-   [3]: https://github.com/ctoestreich/grails-spock-constraints/blob/master
-/grails-app/domain/com/tgid/data/Person.groovy
+   [3]: https://github.com/ctoestreich/grails-spock-constraints/blob/master/grails-app/domain/com/tgid/data/Person.groovy
 
    [4]: http://grails.org/doc/2.0.x/ref/Constraints/attributes.html
 
@@ -625,8 +623,7 @@ m.atlassian.jira.plugin.system.issuetabpanels%3acomment-tabpanel#comment-67107
 
    [25]: http://grails.org/doc/2.0.x/guide/testing.html#unitTesting
 
-   [26]: http://www.objectpartners.com/2011/02/10/grails-testing-domain-
-constraints/
+   [26]: http://www.objectpartners.com/2011/02/10/grails-testing-domain-constraints/
 
    [27]: http://meetspock.appspot.com/script/35001
 
