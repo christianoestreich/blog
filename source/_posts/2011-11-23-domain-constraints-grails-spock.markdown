@@ -21,4 +21,4 @@ tags:
 - unit testing
 ---
 
-Please refer to the updated post at [http://www.christianoestreich.com/domain-constraints-grails-spock-updated](http://www.christianoestreich.com/domain-constraints-grails-spock-updated)
+Please refer to the updated post at [http://www.christianoestreich.com/2012/11/domain-constraints-grails-spock-updated/](http://www.christianoestreich.com/2012/11/domain-constraints-grails-spock-updated/)
