@@ -101,10 +101,11 @@ class BootStrap {
             @Override
             protected void verifyPlaintextPassword(org.apache.ws.security.message.token.UsernameToken usernameToken, org.apache.ws.security.handler.RequestData data)
                 throws org.apache.ws.security.WSSecurityException {
-                if(data.username == "wsuser" && usernameToken.password != "secret") {
-                    throw new WSSecurityException("password mismatch")
-                } else {
-                    println "user name and password were correct!"
+                if(data.username == "wsuser" && usernameToken.password == "secret") {
+		    println "username and password are correct!"
+		} else {
+		    println "username and password are NOT correct..."
+                    throw new WSSecurityException("user and/or password mismatch")
                 }
             }
         });
