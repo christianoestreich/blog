@@ -567,11 +567,11 @@ is updated.
 
 ### References
 
-Another Spock Constraint Test: [http://meetspock.appspot.com/script/35001][27]
-Spock Documentation: [http://code.google.com/p/spock/][22] 
-Generic Constraint Validation: [http://www.objectpartners.com/2011/02/10/grails-testing-domain-constraints/][26] 
-Grails 2.0 Docs: [http://grails.org/doc/2.0.x/][28] 
-Grails 2.0 Mocking: [http://grails.org/doc/2.0.x/guide/testing.html#mockingCollaborators][29]
+* Another Spock Constraint Test: [http://meetspock.appspot.com/script/35001][27]
+* Spock Documentation: [http://code.google.com/p/spock/][22]
+* Generic Constraint Validation: [http://www.objectpartners.com/2011/02/10/grails-testing-domain-constraints/][26]
+* Grails 2.0 Docs: [http://grails.org/doc/2.0.x/][28]
+* Grails 2.0 Mocking: [http://grails.org/doc/2.0.x/guide/testing.html#mockingCollaborators][29]
 
    [1]: https://github.com/ctoestreich/grails-spock-constraints
 
