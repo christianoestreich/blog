@@ -21,7 +21,7 @@ tags:
 - jax-rs
 ---
 
-The Grails Cxf plugin makes exposing classes (services and endpoints) as SOAP web services easy and painless.  Since version 1.0.0, it has been rewritten and enhanced to support more features including the migration to grails 2.x.
+The [Grails Cxf Plugin][3] makes exposing classes (services and endpoints) as SOAP web services easy and painless.  Since version 1.0.0, it has been rewritten and enhanced to support more features including the migration to grails 2.x.
 
 The current cxf version is [2.6.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310511&styleName=Html&Create=Create&version=12321668)
 
@@ -35,7 +35,7 @@ Some new things as of version 1.x are as follows:
 * Many new examples to help with configuration can be found in the source via functional specs and test classes at <https://github.com/thorstadt/grails-cxf>
 * Default plugin configuration is provided via `DefaultCxfConfig.groovy`.  Although usually not necessary, you can override in your project's Config.groovy
 * The default url for wsdl viewing remains `http://.../[app name if not root]/services` as it was in previous versions.  Multiple cxf servlet endpoints can be configured or the default changed via Config.goovy
-* Wsdl First services are now available to use <a href="#wsdl">example below</a>
+* Wsdl First services are now available to use
 * Plugin should be *mostly* backwards compatible and work in grails 1.3.x
 
 You can get more details at [https://github.com/thorstadt/grails-cxf][1]
@@ -44,4 +44,5 @@ There is also a demo project if you do not want to run the cxf plugin code inlin
 
    [1]: https://github.com/thorstadt/grails-cxf (grails cxf plugin)
    [2]: https://github.com/ctoestreich/grails-cxf-test (grails cxf test project)
+   [3]: http://grails.org/plugin/cxf (grails cxf plugin)
 
