@@ -91,6 +91,8 @@ text you are typing retrieved via ajax of course.
 
 I will keep putting my code samples up here as I create them.
 
+Cheers
+
    [1]: http://www.scala-lang.org (Scala)
 
    [2]: http://www.liftweb.net (Liftweb)
