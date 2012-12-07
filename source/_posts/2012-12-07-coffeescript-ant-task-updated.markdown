@@ -29,6 +29,7 @@ I decided to [fork and update the project][2].  In doing so I also learned a bit
 Here is the 0.1.6 Change Log:
 
 **0.1.6 - 2012/11/26**
+
 * Updated to CoffeeScript 1.4.0
 * Changed Task for `CoffeeScriptC` to inherit `Task` instead of `MatchingTask` so we can add a boolean flag to optionally inherit directory nesting. The new flag is called `nesting`.
 * Changed `noWrap` to the new `bare` param for coffee-script compiler.
