@@ -57,4 +57,4 @@ For more details you can see my usage in the [documentation][2] for the cxf plug
 
    [1]: https://github.com/jwagenleitner/groovy-wslite (wslite github)
    [2]: https://github.com/thorstadt/grails-cxf#custom-security-interceptors (cxf plugin documentation)
-   [2]: https://github.com/thorstadt/grails-cxf/blob/master/test/functional/org/grails/cxf/test/AnnotatedSecureServiceSpec.groovy (wslite security test)
+   [3]: https://github.com/thorstadt/grails-cxf/blob/master/test/functional/org/grails/cxf/test/AnnotatedSecureServiceSpec.groovy (wslite security test)
