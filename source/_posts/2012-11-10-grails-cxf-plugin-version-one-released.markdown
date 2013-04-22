@@ -40,9 +40,9 @@ Some new things as of version 1.x are as follows:
 
 You can get more details at [https://github.com/thorstadt/grails-cxf][1]
 
-There is also a demo project if you do not want to run the cxf plugin code inline at [https://github.com/ctoestreich/grails-cxf-test][2]
+There is also a demo project if you do not want to run the cxf plugin code inline at [https://github.com/Grails-Plugin-Consortium/grails-cxf-test][2]
 
    [1]: https://github.com/thorstadt/grails-cxf (grails cxf plugin)
-   [2]: https://github.com/ctoestreich/grails-cxf-test (grails cxf test project)
+   [2]: https://github.com/Grails-Plugin-Consortium/grails-cxf-test (grails cxf test project)
    [3]: http://grails.org/plugin/cxf (grails cxf plugin)
 

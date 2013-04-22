@@ -30,7 +30,7 @@ false binding = [Specifies JAXWS or JAXB binding files or XMLBeans context
 files] //optional outputDir = [location to output generated files] //optional
 - defaults to src/java
 
-You can get more details at [https://github.com/ctoestreich/cxf-client][1]
+You can get more details at [https://github.com/Grails-Plugin-Consortium/cxf-client][1]
 
-   [1]: https://github.com/ctoestreich/cxf-client (grails cxf client)
+   [1]: https://github.com/Grails-Plugin-Consortium/cxf-client (grails cxf client)
 

@@ -122,7 +122,7 @@ class BootStrap {
 
 My frustrations really only apply to the username token authentication issue, but I haven't tried getting the certificate or ldap authentication working on the server side in 2.5.2 yet.  In general if you need in or out logging or security interceptors on your [cxf plugin][3] exposed services, the above mentioned is a pretty good way to get them on there.  What you put into the properties of those interceptors to make them work is on you.  Good Luck!
 
-[1]: https://www.github.com/ctoestreich/cxf-client-demo (Grails Cxf Client Demo)
-[2]: https://www.github.com/ctoestreich/cxf-client (Grails Cxf Client Plugin)
+[1]: https://www.github.com/Grails-Plugin-Consortium/cxf-client-demo (Grails Cxf Client Demo)
+[2]: https://www.github.com/Grails-Plugin-Consortium/cxf-client (Grails Cxf Client Plugin)
 [3]: http://www.grails.org/plugin/cxf (Grails Cxf Plugin)
 [4]: http://cxf.apache.org/docs/ws-security.html (Apache Cxf Security Docs)

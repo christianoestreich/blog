@@ -40,10 +40,10 @@ service end point invocations through an easy configuration driven mechanism.
 A big thanks to Brett Borchardt and Stefan Armbruster for helping out with the
 plugin coding/review and the wsdl2java script.
 
-The source can be found here:  [https://github.com/ctoestreich/cxf-client][2]
+The source can be found here:  [https://github.com/Grails-Plugin-Consortium/cxf-client][2]
 
 
    [1]: http://grails.org/plugin/cxf-client (cxf client plugin)
 
-   [2]: https://github.com/ctoestreich/cxf-client (cxf client source)
+   [2]: https://github.com/Grails-Plugin-Consortium/cxf-client (cxf client source)
 
