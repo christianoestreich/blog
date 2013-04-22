@@ -41,7 +41,7 @@ injecting for the users.
 <!-- more  -->
 
 The following partial documentation is available in full at
-[https://github.com/Grails-Plugin-Consortium/grails-cxf-client][2]
+[https://github.com/Grails-Plugin-Consortium/cxf-client][2]
 
 To begin create the interceptor bean.
 
@@ -108,11 +108,11 @@ use the default logging as the default value is true. If you wish to turn
 them off simply provide the property for your client bean config and set the
 value to false similar to the above block.
 
-See the docs at [https://github.com/Grails-Plugin-Consortium/grails-cxf-client][2] for more
+See the docs at [https://github.com/Grails-Plugin-Consortium/cxf-client][2] for more
 details on further use of the cxf-client plugin and additional tips for wiring
 up interceptors.
 
    [1]: http://www.grails.org/plugin/cxf-client (Grails Cxf Client Plugin)
 
-   [2]: https://github.com/Grails-Plugin-Consortium/grails-cxf-client
+   [2]: https://github.com/Grails-Plugin-Consortium/cxf-client
 

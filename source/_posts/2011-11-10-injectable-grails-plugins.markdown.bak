@@ -180,10 +180,10 @@ but putting all the pieces of the puzzle together was a bit challenging.
    [1]: http://grails.org/plugin/cxf-client
    [2]: https://github.com/grails-plugins/grails-spring-security-core/blob/master/SpringSecurityCoreGrailsPlugin.groovy
    [3]: http://grails-plugins.github.com/grails-spring-security-core/docs/manual/guide/16%20Filters.html
-   [4]: https://github.com/Grails-Plugin-Consortium/grails-cxf-client
-   [5]: https://github.com/Grails-Plugin-Consortium/grails-cxf-client-demo
+   [4]: https://github.com/Grails-Plugin-Consortium/cxf-client
+   [5]: https://github.com/Grails-Plugin-Consortium/cxf-client-demo
    [6]: http://www.technipelago.se/content/technipelago/blog/basic-authentication-grails-cxf
    [7]: http://chrisdail.com/download/BasicAuthAuthorizationInterceptor.java
-   [8]: https://github.com/Grails-Plugin-Consortium/grails-cxf-client-demo/blob/master/grails-app/conf/BootStrap.groovy
+   [8]: https://github.com/Grails-Plugin-Consortium/cxf-client-demo/blob/master/grails-app/conf/BootStrap.groovy
    [9]: http://cxf.apache.org/docs/interceptors.html
 
