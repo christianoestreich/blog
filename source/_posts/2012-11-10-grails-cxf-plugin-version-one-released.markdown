@@ -32,17 +32,17 @@ Some new things as of version 1.x are as follows:
 * Service creation scripts create-cxf-service and create-cxf-service-simple will create cxf artefacts in grails-app\services
 * The suggested pattern to isolate cxf endpoints is to have endpoints live in grails-app/endpoints directory (or you can use grails-app/services for overlapping and shared services)
 * Built in support for simple Map response type handling via `@XmlJavaTypeAdapter(GrailsCxfMapAdapter.class)` method annotation has been included to use or to kick start your own map adapter creation
-* Many new examples to help with configuration can be found in the source via functional specs and test classes at <https://github.com/thorstadt/grails-cxf>
+* Many new examples to help with configuration can be found in the source via functional specs and test classes at <https://github.com/Grails-Plugin-Consortium/grails-cxf>
 * Default plugin configuration is provided via `DefaultCxfConfig.groovy`.  Although usually not necessary, you can override in your project's Config.groovy
 * The default url for wsdl viewing remains `http://.../[app name if not root]/services` as it was in previous versions.  Multiple cxf servlet endpoints can be configured or the default changed via Config.goovy
 * Wsdl First services are now available to use
 * Plugin should be *mostly* backwards compatible and work in grails 1.3.x
 
-You can get more details at [https://github.com/thorstadt/grails-cxf][1]
+You can get more details at [https://github.com/Grails-Plugin-Consortium/grails-cxf][1]
 
 There is also a demo project if you do not want to run the cxf plugin code inline at [https://github.com/Grails-Plugin-Consortium/grails-cxf-test][2]
 
-   [1]: https://github.com/thorstadt/grails-cxf (grails cxf plugin)
+   [1]: https://github.com/Grails-Plugin-Consortium/grails-cxf (grails cxf plugin)
    [2]: https://github.com/Grails-Plugin-Consortium/grails-cxf-test (grails cxf test project)
    [3]: http://grails.org/plugin/cxf (grails cxf plugin)
 
