@@ -27,9 +27,9 @@ For quite a while I have been stuck using grails 2.2.0 on a [Travis CI][1] build
 
 ## The Hack
 
-When setting up the script I noticed that it was failing due to a return code of 1.  I forked and inspected the [GVM][2] code and identified a fix.  It needed to return a 0 after it does the install.  I submitted a [pull request][4] with the fix.
+When setting up the script I noticed that it was failing due to a return code of 1.  I forked and inspected the [GVM][2] code and identified a fix.  It needed to return a 0 after it does the install.
 
-I have submitted a pull request to fix the return issue in the gvm-install.sh script, so in the meantime you will need to keep the bit where it grabs my file and replaces the current one as seen in the script below.
+I have submitted a [pull request][4] to fix the return issue in the gvm-install.sh script, but in the meantime you will need to keep the bit in the before-install block where it grabs my file and replaces the current one as seen in the script below.
 
 ## The Setup
 
