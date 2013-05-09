@@ -27,7 +27,7 @@ For quite a while I have been stuck using grails 2.2.0 on a [Travis CI][1] build
 
 ## The Hack
 
-When setting up the script I noticed that it was failing due to a return code of 1.  I forked and inspected the [GVM][2] code and identified a fix.  It needed to return a 0 after it does the install.  Pull request here: [https://github.com/gvmtool/gvm/pull/167]
+When setting up the script I noticed that it was failing due to a return code of 1.  I forked and inspected the [GVM][2] code and identified a fix.  It needed to return a 0 after it does the install.  I submitted a [pull request][4] with the fix.
 
 I have submitted a pull request to fix the return issue in the gvm-install.sh script, so in the meantime you will need to keep the bit where it grabs my file and replaces the current one as seen in the script below.
 
@@ -95,3 +95,4 @@ Once the pull request is complete you will be able to remove the line:
    [1]: https://travis-ci.org (Travis CI)
    [2]: http://gvmtool.net/ (the Groovy enVironment Manager)
    [3]: https://github.com/Grails-Plugin-Consortium/grails-filterpane-demo/blob/master/.travis.yml (Working Example)
+   [4]: https://github.com/gvmtool/gvm/pull/167 (Pull Request)
