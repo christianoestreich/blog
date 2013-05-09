@@ -35,7 +35,7 @@ I have submitted a [pull request][4] to fix the return issue in the gvm-install.
 
 Travis appears to come with a package called GVM already on the box for Go language management.  We have to remove that first via `rm -rf ~/.gvm`.  We are then free to install [GVM][2] as it will not fail the check for the ~/.gvm directory.
 
-Travis doesn't like you to pipe commands back to bash as is suggested in the GVM docs via `curl -s get.gvmtool.net | bash` so we have to get the install script and stick it into local file to execute.  We do this via this code block.
+Travis doesn't like you to pipe commands back to bash as suggested in the GVM docs via `curl -s get.gvmtool.net | bash` so we have to get the install script and stick it into local file to execute.  We do this via this code block.
 
 ```
 curl -s get.gvmtool.net > ~/install_gvm.sh
