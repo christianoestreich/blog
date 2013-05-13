@@ -21,7 +21,7 @@ tags:
 - continuous
 ---
 
-For quite a while I have been stuck using grails 2.2.0 on a [Travis CI][1] build server due to any later version not being added to the groovy ppa on ubuntu.  This was done because of the move to the [GVM][2] tool.  I was able to cobble together a travis script and [GVM][2] hack to get this working.  This is great becuase not I can use Grails 2.2.1, 2.2.2, etc.
+For quite a while I have been stuck using grails 2.2.0 on a [Travis CI][1] build server due to any later version not being added to the groovy ppa on ubuntu.  This was done because of the move to the [GVM][2] tool.  I was able to cobble together a travis script and [GVM][2] hack to get this working.  This is great because now I can use Grails 2.2.1, 2.2.2, etc.
 
 <!-- more -->
 
