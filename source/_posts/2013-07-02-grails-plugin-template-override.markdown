@@ -20,7 +20,7 @@ tags:
 - template
 ---
 
-Recently in the [Grails Filterpane Plugin][1] I had to figure out a way to allow users to selectively override the bundled template files that were rendered in the filterpane taglib.  I was able to achieve this through a bit of simple code that may be helpful to plugin authros in the future.
+Recently in the [Grails Filterpane Plugin][1] I had to figure out a way to allow users to selectively override the bundled template files that were rendered in the filterpane taglib.  I was able to achieve this through a bit of simple code that may be helpful to plugin authors in the future.
 
 <!-- more -->
 
