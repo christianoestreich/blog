@@ -5,15 +5,17 @@ language: ruby
 rvm:
 - 1.9.3
 before_script:
-- export REPO_URL="https://$GH_TOKEN@github.com/$GH_REPO.git"
+- export REPO_URL="https://$GH_TOKEN@github.com/christianoestreich/christianoestreich.github.com.git"
 - rake setup_github_pages[$REPO_URL]
 script:
 - rake generate
 after_script:
-- git config user.email "acetrike@yahoo.com"
-- git config user.name "Christian Oestreich"
+- git config --global user.email "acetrike@yahoo.com"
+- git config --global user.name "Christian Oestreich"
 - rake deploy
 env:
   global:
   - GH_REPO="christianoestreich/christianoestreich.github.com"
-  - secure: "DW7fm/DGedTJYxt1s7faA2E0jjNgbQ3Bi2BUuYPuBvItdpqsoRCfYo83ufb39hD29VKwJ3Gj3fJ199yKQ3HmRGKtkOhPaDIETO0wVxLSOHkPpyI4MUuIRfnA1XklY9SaIwkVaFsK/U9zut2Ony0jDCsVMzy4xXTlvnuae7GE0OA="
+  #- secure: DW7fm/DGedTJYxt1s7faA2E0jjNgbQ3Bi2BUuYPuBvItdpqsoRCfYo83ufb39hD29VKwJ3Gj3fJ199yKQ3HmRGKtkOhPaDIETO0wVxLSOHkPpyI4MUuIRfnA1XklY9SaIwkVaFsK/U9zut2Ony0jDCsVMzy4xXTlvnuae7GE0OA=
+  - secure: NI1sD1BZcaD627T4oHeoxaxmom+rASSB+xYTOUnQfCCoWuQqfMHJvklhUJkkCZKx23/QrWo9Duy/tW1PvOGzXIvJ8G/TzX+AKYcp888CL7XLfukHCdASYime9W2r02OPLrf2fWtnwbuUb8MqZrksfheXOnOFqaYTPcfyBRfEibE=
+  #- secure: Ij59xOQOmBIMyN10Ry9aJn7T7vVhPqeJpsBGOpSe5HfVwDysK8NFereOqgGhaT1Cwax9IHxoEfK2hPtPy5PSLYXTyeK+zh0DgCj7U96EdR67DUmf0hwuGvhNP4VDDGYfxv4cn+9RCNxP1mIMpr1J1KGAz/BlkCwJUSPjrlBLnsQ=
