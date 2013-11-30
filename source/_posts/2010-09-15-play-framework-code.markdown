@@ -20,7 +20,7 @@ tags:
 - Scala
 ---
 
-I have been doing some at-work analysis on Lift and Scala.  I really like it
+I have been doing some analysis on Lift and Scala.  I really like it
 so far despite the drawbacks of poor code examples available online.  I also
 have some personal projects that I am working on at home and wanted to expand
 my knowledge of other frameworks so I decided to check out the [Play! Framework][1].
