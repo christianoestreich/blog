@@ -1,0 +1,17 @@
+branches:
+  only:
+  - source
+language: ruby
+rvm:
+- 1.9.3
+before_script:
+- export REPO_URL="https://$GH_TOKEN@github.com/$GH_REPO.git"
+- rake setup_github_pages[$REPO_URL]
+script:
+- rake generate
+after_script:
+- rake deploy
+env:
+  global:
+  - GH_REPO="christianoestreich/christianoestreich.github.com"
+  - secure: DW7fm/DGedTJYxt1s7faA2E0jjNgbQ3Bi2BUuYPuBvItdpqsoRCfYo83ufb39hD29VKwJ3Gj3fJ199yKQ3HmRGKtkOhPaDIETO0wVxLSOHkPpyI4MUuIRfnA1XklY9SaIwkVaFsK/U9zut2Ony0jDCsVMzy4xXTlvnuae7GE0OA=
