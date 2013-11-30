@@ -102,13 +102,13 @@ google_analytics_tracking_id: UA-8726967-3
 # Facebook Like
 facebook_like: true
 
-#prose.io settings
-prose:
-  rooturl: "source"
-  metadata:
-    "source/_posts": |
-      layout: post
-      title: "Title"
-      comments: true
-      categories: 
-      published: true
+# #prose.io settings
+# prose:
+#   rooturl: "source"
+#   metadata:
+#     "source/_posts": |
+#       layout: post
+#       title: "Title"
+#       comments: true
+#       categories: 
+#       published: true
