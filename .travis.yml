@@ -13,5 +13,5 @@ after_script:
 - rake deploy
 env:
   global:
-  - GH_REPO="christianoestreich/christianoestreich.github.com"
+  - GH_REPO: "christianoestreich/christianoestreich.github.com"
   - secure: DW7fm/DGedTJYxt1s7faA2E0jjNgbQ3Bi2BUuYPuBvItdpqsoRCfYo83ufb39hD29VKwJ3Gj3fJ199yKQ3HmRGKtkOhPaDIETO0wVxLSOHkPpyI4MUuIRfnA1XklY9SaIwkVaFsK/U9zut2Ony0jDCsVMzy4xXTlvnuae7GE0OA=
