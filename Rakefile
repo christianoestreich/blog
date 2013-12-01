@@ -12,11 +12,11 @@ rsync_args     = ""  # Any extra arguments to pass to rsync
 deploy_default = "rsync"
 
 # This will be configured for you when you run config_deploy
-deploy_branch  = "master"
+deploy_branch  = "gh-pages"
 
 ## -- Misc Configs -- ##
 
-public_dir      = "public/blog"    # compiled site directory
+public_dir      = "public"    # compiled site directory
 source_dir      = "source"    # source file directory
 blog_index_dir  = 'source'    # directory for your blog's index page (if you put your index in source/blog/index.html, set this to 'source/blog')
 deploy_dir      = "_deploy"   # deploy directory (for Github pages deployment)
@@ -108,15 +108,9 @@ task :new_post, :title do |t, args|
     post.puts "---"
     post.puts "layout: post"
     post.puts "title: \"#{title.gsub(/&/,'&amp;')}\""
-    post.puts "slug: blah-blah"
-    post.puts "date: #{Time.now.strftime('%Y-%m-%d %H:%M')}"
+    post.puts "date: #{Time.now.strftime('%Y-%m-%d %H:%M:%S %z')}"
     post.puts "comments: true"
-    post.puts "status: publish"
-    post.puts "published: false"
     post.puts "categories: "
-    post.puts "- Technology"
-    post.puts "tags: "
-    post.puts "- Grails"
     post.puts "---"
   end
 end
@@ -254,7 +248,7 @@ desc "deploy public directory to github pages"
 multitask :push do
   puts "## Deploying branch to Github Pages "
   puts "## Pulling any updates from Github Pages "
-  cd "#{deploy_dir}" do
+  cd "#{deploy_dir}" do 
     system "git pull"
   end
   (Dir["#{deploy_dir}/*"]).each { |f| rm_rf(f) }
@@ -264,10 +258,10 @@ multitask :push do
   cd "#{deploy_dir}" do
     system "git add -A"
     puts "\n## Commiting: Site updated at #{Time.now.utc}"
-    message = "Site updated at #{Time.now.utc}\n\n[ci skip]"
+    message = "Site updated at #{Time.now.utc}"
     system "git commit -m \"#{message}\""
     puts "\n## Pushing generated #{deploy_dir} website"
-    system "git push origin #{deploy_branch} --force --quiet"
+    system "git push origin #{deploy_branch}"
     puts "\n## Github Pages deploy complete"
   end
 end
@@ -354,7 +348,7 @@ task :setup_github_pages, :repo do |t, args|
     system "git init"
     system "echo 'My Octopress Page is coming soon &hellip;' > index.html"
     system "git add ."
-    system "git commit -m \"Octopress init\n\n[ci skip]\""
+    system "git commit -m \"Octopress init\""
     system "git branch -m gh-pages" unless branch == 'master'
     system "git remote add origin #{repo_url}"
     rakefile = IO.read(__FILE__)
@@ -364,7 +358,7 @@ task :setup_github_pages, :repo do |t, args|
       f.write rakefile
     end
   end
-  puts "\n---\n## Now you can deploy to #{repo_url} with `rake deploy` ##"
+  puts "\n---\n## Now you can deploy with `rake deploy` ##"
 end
 
 def ok_failed(condition)

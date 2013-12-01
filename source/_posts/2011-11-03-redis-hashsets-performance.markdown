@@ -19,8 +19,7 @@ tags:
 - redis
 ---
 
-Recently I read a pretty interesting [blog post][1] by Mike Krieger, co-
-counder of Instagram.  The summary of the post was they were faced with an
+Recently I read a pretty interesting [blog post][1] by Mike Krieger, co-founder of Instagram.  The summary of the post was they were faced with an
 interesting challenge in storing 300 million key value pairs for consumer to
 photo resolution.  They even went as far as to write an interesting test in
 python and posted it on [github gist][2].
@@ -65,7 +64,7 @@ second ids through the compression methods.  For the space savings to be
 really worth while I am assuming the number would need to be at least 4 digits
 long as the compression would only be a byte going from 3 to 2 (33%) as
 opposed to going from 4 to 2 (50%).  Five and six digit ids will both reduce
-to 3 chars, seven and eight to 4, etc.  I am doing  a 2->1 reduce  and have to
+to 3 chars, seven and eight to 4, etc.  I am doing�� a 2->1 reduce�� and have to
 pad the odd length keys with a 0 in effect giving you (n) and (n-1) having the
 same number of bytes in memory (where n = all even length keys).
 

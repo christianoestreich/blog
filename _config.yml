@@ -2,9 +2,8 @@
 #      Main Configs       #
 # ----------------------- #
 
-#url: http://www.christianoestreich.com
 url: http://www.christianoestreich.com
-title: Christian Oestreich 
+title: Christian Oestreich
 subtitle: software.development.professional
 author: Christian Oestreich
 simple_search: http://google.com/search
@@ -17,7 +16,7 @@ description: Christian Oestreich - Grails, Groovy, JQuery &amp; Java
 date_format: "ordinal"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
-subscribe_rss: http://feeds.feedburner.com/ctoestreich 
+subscribe_rss: http://feeds.feedburner.com/ctoestreich
 subscribe_email:
 # RSS feeds can list your email address if you like
 email:
@@ -30,7 +29,7 @@ email:
 root: /
 permalink: /:year/:month/:day/:title/
 source: source
-destination: public/blog
+destination: public
 plugins: plugins
 code_dir: downloads/code
 category_dir: blog/categories
@@ -51,7 +50,7 @@ titlecase: true       # Converts page and post titles to titlecase
 
 # list each of the sidebar modules you want to include, in the order you want them to appear.
 # To add custom asides, create files in /source/_includes/custom/asides/ and add them to the list like 'custom/asides/custom_aside_name.html'
-default_asides: [asides/recent_posts.html, asides/tag_cloud.html, asides/ads.html, asides/github.html, asides/github2.html, asides/twitter.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html, asides/ads2.html]
+default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html]
 
 # Each layout uses the default asides, but they can have their own asides instead. Simply uncomment the lines below
 # and add an array with the asides you want to use.
@@ -103,14 +102,3 @@ google_analytics_tracking_id: UA-8726967-3
 
 # Facebook Like
 facebook_like: true
-
-# #prose.io settings
-# prose:
-#   rooturl: "source"
-#   metadata:
-#     "source/_posts": |
-#       layout: post
-#       title: "Title"
-#       comments: true
-#       categories: 
-#       published: true
