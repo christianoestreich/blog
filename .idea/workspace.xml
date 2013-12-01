@@ -7,6 +7,9 @@
     <file path="/_config.yml" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385868197848" ignored="false" />
     <file path="/Rakefile" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385869205233" ignored="false" />
     <file path="/2011-11-03-redis-hashsets-performance.markdown" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385866883966" ignored="false" />
+    <file path="/header.html" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385869737635" ignored="false" />
+    <file path="$PROJECT_DIR$/public/stylesheets/screen.css" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385871522156" ignored="false" />
+    <file path="/index.html" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385871610063" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,16 +72,63 @@
       <file leaf-file-name="_config.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="19" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.0">
+            <state line="6" column="18" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Rakefile" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Rakefile" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Rakefile">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="22" selection-start="368" selection-end="372" vertical-scroll-proportion="0.18154311">
+            <state line="3" column="71" selection-start="368" selection-end="372" vertical-scroll-proportion="-0.5769231">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="54" column="254" selection-start="2690" selection-end="2690" vertical-scroll-proportion="0.5390625">
+              <folding>
+                <element signature="n#style#0;n#a#0;n#h2#0;n#hgroup#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="font-awesome.min.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/stylesheets/font-awesome.min.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="default.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/_layouts/default.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="130" selection-start="91" selection-end="91" vertical-scroll-proportion="-0.625">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="head.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/_includes/head.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/_includes/custom/header.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="2" selection-start="346" selection-end="346" vertical-scroll-proportion="-1.875">
               <folding />
             </state>
           </provider>
@@ -115,6 +165,9 @@
         <option value="$PROJECT_DIR$/source/_posts/2011-11-03-redis-hashsets-performance.markdown" />
         <option value="$PROJECT_DIR$/_config.yml" />
         <option value="$PROJECT_DIR$/Rakefile" />
+        <option value="$PROJECT_DIR$/source/index.html" />
+        <option value="$PROJECT_DIR$/source/_includes/custom/header.html" />
+        <option value="$PROJECT_DIR$/public/index.html" />
       </list>
     </option>
   </component>
@@ -281,7 +334,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1440" height="848" extended-state="0" />
+    <frame x="0" y="22" width="1440" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -398,17 +451,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_config.yml">
+    <entry file="file://$PROJECT_DIR$/Rakefile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="19" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.0">
+        <state line="3" column="71" selection-start="368" selection-end="372" vertical-scroll-proportion="-0.5769231">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Rakefile">
+    <entry file="file://$PROJECT_DIR$/source/_includes/header.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="22" selection-start="368" selection-end="372" vertical-scroll-proportion="0.18154311">
+        <state line="1" column="41" selection-start="33" selection-end="33" vertical-scroll-proportion="0.022970904">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_includes/custom/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="2" selection-start="346" selection-end="346" vertical-scroll-proportion="-1.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="120" selection-start="3" selection-end="3" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="18" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/font-awesome.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_includes/head.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_layouts/default.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="130" selection-start="91" selection-end="91" vertical-scroll-proportion="-0.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="254" selection-start="2690" selection-end="2690" vertical-scroll-proportion="0.5390625">
+          <folding>
+            <element signature="n#style#0;n#a#0;n#h2#0;n#hgroup#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
