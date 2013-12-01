@@ -69,19 +69,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="_config.yml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="_config.yml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/_config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="18" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0">
+            <state line="29" column="24" selection-start="1027" selection-end="1027" vertical-scroll-proportion="0.5421687">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Rakefile" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Rakefile" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Rakefile">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="263" column="14" selection-start="10838" selection-end="10838" vertical-scroll-proportion="0.54388714">
+            <state line="263" column="14" selection-start="10838" selection-end="10838" vertical-scroll-proportion="-13.346154">
               <folding />
             </state>
           </provider>
@@ -152,12 +152,12 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/source/_posts/2011-11-03-redis-hashsets-performance.markdown" />
-        <option value="$PROJECT_DIR$/_config.yml" />
         <option value="$PROJECT_DIR$/source/index.html" />
         <option value="$PROJECT_DIR$/source/_includes/custom/header.html" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/Rakefile" />
+        <option value="$PROJECT_DIR$/_config.yml" />
       </list>
     </option>
   </component>
@@ -462,13 +462,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="18" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/_includes/head.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -492,7 +485,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Rakefile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="263" column="14" selection-start="10838" selection-end="10838" vertical-scroll-proportion="0.54388714">
+        <state line="263" column="14" selection-start="10838" selection-end="10838" vertical-scroll-proportion="-13.346154">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="24" selection-start="1027" selection-end="1027" vertical-scroll-proportion="0.5421687">
           <folding />
         </state>
       </provider>
