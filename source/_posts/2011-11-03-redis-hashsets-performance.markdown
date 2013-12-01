@@ -19,8 +19,7 @@ tags:
 - redis
 ---
 
-Recently I read a pretty interesting [blog post][1] by Mike Krieger, co-founder of Instagram.  The summary of the post was they were faced with an interesting challenge in storing 300 million key value pairs for consumer to
-photo resolution.  They even went as far as to write an interesting test in
+Recently I read a pretty interesting [blog post][1] by Mike Krieger, co-founder of Instagram.  The summary of the post was they were faced with an interesting challenge in storing 300 million key value pairs for consumer to photo resolution.  They even went as far as to write an interesting test in
 python and posted it on [github gist][2].
 
 I wanted to see if I could improve a bit on his memory allocation in the redis
