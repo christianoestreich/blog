@@ -5,13 +5,13 @@ language: ruby
 rvm:
 - 1.9.3
 before_script:
+- git config --global user.email "acetrike@yahoo.com"
+- git config --global user.name "Christian Oestreich"
 - export REPO_URL="https://$GH_TOKEN@github.com/christianoestreich/christianoestreich.github.com.git"
 - rake setup_github_pages[$REPO_URL]
 script:
 - rake generate
 after_script:
-- git config --global user.email "acetrike@yahoo.com"
-- git config --global user.name "Christian Oestreich"
 - rake deploy
 env:
   global:
