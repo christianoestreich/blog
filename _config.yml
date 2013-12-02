@@ -64,9 +64,14 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 
 # Github repositories
 github_user: ctoestreich
-github_repo_count: 5
+github_repo_count: 10
 github_show_profile_link: true
 github_skip_forks: true
+
+github2_user: Grails-Plugin-Consortium
+github2_repo_count: 10
+github2_show_profile_link: true
+github2_skip_forks: true
 
 # Twitter
 twitter_user: ctoestreich

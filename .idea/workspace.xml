@@ -9,7 +9,17 @@
     <file path="/2011-11-03-redis-hashsets-performance.markdown" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385866883966" ignored="false" />
     <file path="/header.html" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385869737635" ignored="false" />
     <file path="$PROJECT_DIR$/public/stylesheets/screen.css" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385871522156" ignored="false" />
-    <file path="/index.html" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385871610063" ignored="false" />
+    <file path="/index.html" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385919550756" ignored="false" />
+    <file path="/navigation.html" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385918555725" ignored="false" />
+    <file path="$PROJECT_DIR$/../knockout-validation-rule-engine/Gruntfile.js" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385919322619" ignored="false" />
+    <file path="$PROJECT_DIR$/../knockout-validation-rule-engine/bower.json" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385919330422" ignored="false" />
+    <file path="$PROJECT_DIR$/../knockout-validation-rule-engine/package.json" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385919866007" ignored="false" />
+    <file path="$PROJECT_DIR$/../knockout-validation-rule-engine/index.html" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385919573564" ignored="false" />
+    <file path="$PROJECT_DIR$/../knockout-validation-rule-engine/app/config.js" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385919708759" ignored="false" />
+    <file path="/config.js" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385919627127" ignored="false" />
+    <file path="$PROJECT_DIR$/../knockout-validation-rule-engine/app/knockoutValidationRuleEngine.js" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385919968230" ignored="false" />
+    <file path="$PROJECT_DIR$/../knockout-validation-rule-engine/app/rule/default/rules.js" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385919990792" ignored="false" />
+    <file path="/rules.js" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385919990413" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,10 +79,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="_config.yml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_config.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="24" selection-start="1027" selection-end="1027" vertical-scroll-proportion="0.5421687">
+            <state line="29" column="24" selection-start="1027" selection-end="1027" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -99,7 +109,34 @@
       <file leaf-file-name="default.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/_layouts/default.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="130" selection-start="91" selection-end="91" vertical-scroll-proportion="-0.625">
+            <state line="0" column="45" selection-start="45" selection-end="45" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="navigation.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../octopress/source/_includes/navigation.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="navigation.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../octopress/source/_includes/custom/navigation.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="53" selection-start="0" selection-end="403" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="navigation.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/source/_includes/custom/navigation.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="52" selection-start="405" selection-end="405" vertical-scroll-proportion="0.16079633">
               <folding />
             </state>
           </provider>
@@ -132,15 +169,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_config.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../_config.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="3" selection-start="2501" selection-end="3307" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -158,6 +186,8 @@
         <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/Rakefile" />
         <option value="$PROJECT_DIR$/_config.yml" />
+        <option value="$PROJECT_DIR$/../octopress/source/_includes/custom/navigation.html" />
+        <option value="$PROJECT_DIR$/source/_includes/custom/navigation.html" />
       </list>
     </option>
   </component>
@@ -469,13 +499,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/_layouts/default.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="130" selection-start="91" selection-end="91" vertical-scroll-proportion="-0.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="53" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
@@ -492,7 +515,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/_config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="24" selection-start="1027" selection-end="1027" vertical-scroll-proportion="0.5421687">
+        <state line="29" column="24" selection-start="1027" selection-end="1027" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_layouts/default.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="45" selection-start="45" selection-end="45" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../octopress/source/_includes/navigation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../octopress/source/_includes/custom/navigation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="53" selection-start="0" selection-end="403" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_includes/custom/navigation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="52" selection-start="405" selection-end="405" vertical-scroll-proportion="0.16079633">
           <folding />
         </state>
       </provider>
