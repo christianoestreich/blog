@@ -19,7 +19,7 @@ tags:
 
 We have recently begun working with [Knockout.js][1] and needed a way to run validation on the models.  We found the amazing plugin [Knockout.Validation][2].  This plugin did an awesome job and we were able to port over all our jQuery Validation rules fairly easy.  As I was working with the plugin and my model grew I became annoyed with having to add a lot of .extends to every model property with an ever increasing set of rules.  Thus the concept of the [Knockout Validation Rule Engine][3] was born.
 
-<! -- more -->
+<!-- more -->
 
 ## Getting Started
 
