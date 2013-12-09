@@ -4,7 +4,8 @@ date: '2013-12-01 10:00:00'
 layout: post
 comments: true
 slug: knockout-validation-rules-engine
-status: draft
+status: publish
+published: false
 title: Knockout Validation Rules Engine
 categories:
 - JavaScript
