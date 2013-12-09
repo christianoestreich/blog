@@ -25,8 +25,7 @@ We have recently begun working with [Knockout.js][1] and needed a way to run val
 
 Download the latest [knockout-rule-engine][4] file.
 
-Define a rule set that uses the parent key as the name of the model property you want to map to.  If you wanted to set an email rule for a model with a property
-of userEmail, you would provide the following rule set.
+Define a rule set that uses the parent key as the name of the model property you want to map to.  If you wanted to set an email rule for a model with a property of userEmail, you would provide the following rule set.
 
 ``` javascript
 define(['knockout', 'knockout-rule-engine'], function (ko, RuleEngine) {
@@ -60,8 +59,7 @@ define(['knockout'], function (ko) {
 
 ## Override Knockout Validation Options
 
-You can pass in the options you want to use for the knockout.validation library as the optional second param in the constructor.  For example if you
-wanted to disable the validation plugin from auto inserting messages you would use the following.
+You can pass in the options you want to use for the knockout.validation library as the optional second param in the constructor.  For example if you wanted to disable the validation plugin from auto inserting messages you would use the following.
 
 ``` javascript
 define(['knockout', 'knockout-rule-engine'], function (ko, RuleEngine) {
