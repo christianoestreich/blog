@@ -1,11 +1,11 @@
 ---
 author: ctoestreich
-date: '2013-12-01 10:00:00'
+date: '2013-12-13 10:00:00'
 layout: post
 comments: true
 slug: knockout-validation-rules-engine
 status: publish
-published: false
+published: true
 title: Knockout Validation Rules Engine
 categories:
 - JavaScript
