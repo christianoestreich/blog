@@ -11,18 +11,19 @@
     <file path="$PROJECT_DIR$/public/stylesheets/screen.css" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385871522156" ignored="false" />
     <file path="/index.html" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385919550756" ignored="false" />
     <file path="/navigation.html" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385918555725" ignored="false" />
-    <file path="$PROJECT_DIR$/../knockout-validation-rule-engine/Gruntfile.js" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385919322619" ignored="false" />
-    <file path="$PROJECT_DIR$/../knockout-validation-rule-engine/bower.json" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385919330422" ignored="false" />
-    <file path="$PROJECT_DIR$/../knockout-validation-rule-engine/package.json" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385919866007" ignored="false" />
+    <file path="$PROJECT_DIR$/../knockout-validation-rule-engine/Gruntfile.js" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1386604453432" ignored="false" />
+    <file path="$PROJECT_DIR$/../knockout-validation-rule-engine/bower.json" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1386603460540" ignored="false" />
+    <file path="$PROJECT_DIR$/../knockout-validation-rule-engine/package.json" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1386603522094" ignored="false" />
     <file path="$PROJECT_DIR$/../knockout-validation-rule-engine/index.html" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385919573564" ignored="false" />
     <file path="$PROJECT_DIR$/../knockout-validation-rule-engine/app/config.js" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385919708759" ignored="false" />
     <file path="/config.js" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385919627127" ignored="false" />
     <file path="$PROJECT_DIR$/../knockout-validation-rule-engine/app/knockoutValidationRuleEngine.js" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385919968230" ignored="false" />
     <file path="$PROJECT_DIR$/../knockout-validation-rule-engine/app/rule/default/rules.js" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385919990792" ignored="false" />
     <file path="/rules.js" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1385919990413" ignored="false" />
-    <file path="$PROJECT_DIR$/../knockout-validation-rule-engine/.travis.yml" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1386602777579" ignored="false" />
+    <file path="$PROJECT_DIR$/../knockout-validation-rule-engine/.travis.yml" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1386604400050" ignored="false" />
     <file path="/.travis.yml" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1386602728753" ignored="false" />
     <file path="$PROJECT_DIR$/../knockout-validation-rule-engine/README.md" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1386603004026" ignored="false" />
+    <file path="/Dummy.txt" changelist="f95d3a38-2aed-4bfc-9974-9c0f30fb6e67" time="1386604130372" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -341,7 +342,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="848" extended-state="1" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />

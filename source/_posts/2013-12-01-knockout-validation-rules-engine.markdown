@@ -18,7 +18,7 @@ tags:
 - model
 ---
 
-We have recently begun working with [Knockout.js][1] and needed a way to run validation on the models.  We found the amazing plugin [Knockout.Validation][2].  This plugin did an awesome job and we were able to port over all our jQuery Validation rules fairly easy.  As I was working with the plugin, my model grew and additional models were being created it became tedious having to append every rule to every model property and not remember which rules applied to which model properties across model contexts.  Thus the concept of the [Knockout Validation Rule Engine][3] was born.
+We have recently begun working with [Knockout.js][1] and needed a way to run validation on the models.  We found the amazing plugin [Knockout.Validation][2].  This plugin did an awesome job and we were able to port over all our jQuery Validation rules fairly easy.  As I was working with the plugin, my model grew and additional models were being created it became tedious having to append every rule to every model property and not remember which rules applied to which model properties across model contexts.  Thus the concept of the [Knockout Validation Rule Engine][3] was born.  A working example can be found via [github pages][9]
 
 <!-- more -->
 
@@ -302,3 +302,4 @@ You can still include the plugin without require js.  The plugin adds a global k
 [6]: https://github.com/ctoestreich/knockout-validation-rule-engine/blob/master/app/js/main.js (Knockout Validation Rule Engine Main.js)
 [7]: https://github.com/ctoestreich/knockout-validation-rule-engine/blob/master/app/js/filters/filters.js (Knockout Validation Rule Engine Filters)
 [8]: https://github.com/ctoestreich/knockout-validation-rule-engine/blob/master/test/inline.html (Knockout Validation Rule Engine Tests)
+[9]: http://ctoestreich.github.io/knockout-validation-rule-engine/ (Running Example)
